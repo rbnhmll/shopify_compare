@@ -1,96 +1,80 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar
-      app
-      :clipped-left="clipped"
-    >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
     <v-content>
-      <HelloWorld/>
+      <v-container grid-list-lg>
+        <v-header />
+        <v-layout wrap grid-list->
+          <v-flex xs6>
+            <region-switcher />
+          </v-flex>
+          <v-flex xs6>
+            <timeframe-switcher />
+          </v-flex>
+        </v-layout>
+        <input-form />
+      </v-container>
+      <v-container>
+        <v-summary />
+        <section class="providers">
+          <v-layout row fill-height>
+            <provider
+              v-for="rate in providerData"
+              :key="rate.name"
+              :rates="rate[region]"
+              @total="collectValues($event)"
+            />
+          </v-layout>
+        </section>
+      </v-container>
+      <v-footer />
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import VHeader from './components/VHeader.vue';
+import RegionSwitcher from './components/RegionSwitcher.vue';
+import TimeframeSwitcher from './components/TimeframeSwitcher.vue';
+import InputForm from './components/InputForm.vue';
+import VSummary from './components/VSummary.vue';
+import Provider from './components/Provider.vue';
+import VFooter from './components/VFooter.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VHeader,
+    InputForm,
+    VSummary,
+    RegionSwitcher,
+    TimeframeSwitcher,
+    Provider,
+    VFooter,
   },
-  data () {
-    return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
-    }
-  }
-}
+  methods: {
+    collectValues(val) {
+      this.$store.dispatch('setTotals', val);
+    },
+  },
+  computed: {
+    providerData() {
+      return this.$store.state.providerData;
+    },
+    currentYear() {
+      return (new Date()).getFullYear();
+    },
+    months() {
+      return this.$store.state.months;
+    },
+    timeframe() {
+      return this.$store.getters.timeFrame;
+    },
+    region() {
+      return this.$store.state.region;
+    },
+  },
+};
 </script>
+
+<style lang="stylus">
+</style>
