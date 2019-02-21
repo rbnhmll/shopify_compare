@@ -1,12 +1,14 @@
 <template>
-  <v-app>
+  <div class="wrapper">
     <v-header />
     <main>
       <section class="options">
+        <h2>Options</h2>
         <region-switcher />
         <timeframe-switcher />
       </section>
       <section class="input-form">
+        <h2>User Inputs</h2>
         <input-form />
       </section>
       <section class="provider">
@@ -19,11 +21,9 @@
       </section>
       <v-summary />
     </main>
-
-
     <v-footer />
     <disclaimer />
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -77,4 +77,10 @@ export default {
 </script>
 
 <style lang="stylus">
+  .wrapper
+    max-width 800px
+    width 100%
+    margin 0 auto
+  section
+    border 1px solid #bada55
 </style>

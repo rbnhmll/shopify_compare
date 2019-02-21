@@ -1,85 +1,50 @@
 <template>
-  <v-form>
-    <v-layout>
-      <v-flex>
-        <v-slider
-          :value="userInfo.transactionCount"
-          min="1"
-          max="1000"
-          thumb-label
-          @change="updateField('transactionCount', $event)"
-          label="Number of Transactions"
-        ></v-slider>
-      </v-flex>
-      <v-flex xs2>
-        <v-text-field
-          :value="userInfo.transactionCount"
-          type="number"
-          min="1"
-          max="10000"
-          @input="updateField('transactionCount', $event)"
-          solo
-        />
-      </v-flex>
-    </v-layout>
+  <form @submit.prevent class="input-form">
 
-    <v-layout>
-      <v-flex>
-        <v-slider
-          :value="userInfo.avgTransactionPrice"
-          min="1"
-          max="1000"
-          thumb-label
-          @change="updateField('avgTransactionPrice', $event)"
-          label="Avg. Transaction Price"
-        ></v-slider>
-      </v-flex>
-      <v-flex xs2>
-        <v-text-field
-          :value="userInfo.avgTransactionPrice"
-          type="number"
-          min="1"
-          max="1000"
-          @input="updateField('avgTransactionPrice', $event)"
-          prefix="$"
-          solo
-        />
-      </v-flex>
-    </v-layout>
+    <v-range
+      :value="userInfo.transactionCount"
+      name="Number of Transactions"
+      id="numberOfTransaction"
+      unitBefore="<"
+      unitAfter="+"
+      :min="1"
+      :max="1000"
+      @change="updateField('transactionCount', $event.target.value)"
+    />
 
-    <v-layout>
-      <v-flex>
-        <v-slider
-          v-model="userInfo.avgShippingCost"
-          min="0"
-          max="500"
-          thumb-label
-          @change="updateField('avgShippingCost', $event)"
-          label="Avg. Shipping Cost"
-        ></v-slider>
-      </v-flex>
-      <v-flex xs2>
-        <v-text-field
-          :value="userInfo.avgShippingCost"
-          type="number"
-          min="0"
-          max="500"
-          @input="updateField('avgShippingCost', $event)"
-          prefix="$"
-          solo
-        />
-      </v-flex>
-    </v-layout>
+    <v-range
+      :value="userInfo.avgTransactionPrice"
+      name="Avg. Transaction Price"
+      id="transactionPrice"
+      unitBefore="<"
+      unitAfter="+"
+      :min="1"
+      :max="1000"
+      @change="updateField('avgTransactionPrice', $event.target.value)"
+    />
+
+    <v-range
+      :value="userInfo.avgShippingCost"
+      name="Avg. Shipping Cost"
+      id="shippingCost"
+      unitBefore="<"
+      unitAfter="+"
+      :min="1"
+      :max="500"
+      @change="updateField('avgShippingCost', $event.target.value)"
+    />
     <!-- <advanced-options /> -->
-  </v-form>
+  </form>
 </template>
 
 <script>
+import VRange from './VRange.vue';
 import AdvancedOptions from './AdvancedOptions.vue';
 
 export default {
   name: 'InputForm',
   components: {
+    VRange,
     AdvancedOptions,
   },
   methods: {

@@ -1,45 +1,17 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    width="500"
-  >
-    <v-btn
-      slot="activator"
-      color="primary"
-      dark
-    >
-      !!
-    </v-btn>
-
-    <v-card>
-      <v-card-title
-        class="headline grey lighten-2"
-        primary-title
-      >
+  <div class="disclaimer">
+    <button>!!</button>
+    <div>
+      <header>
         Disclaimer
-      </v-card-title>
+      </header>
 
-      <v-card-text>
-        This tool is made for reference only, and does not guarantee the accurance of any of the information or pricing provided.
+      <p>This tool is made for reference only, and does not guarantee the accurance of any of the information or pricing provided.</p>
+      <p>Sign up links include affilate paramters.</p>
 
-        Sign up links include affilate paramters.
-      </v-card-text>
-
-      <v-divider></v-divider>
-
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn
-          color="primary"
-          flat
-          small
-          @click="dialog = false"
-        >
-          I accept
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+      <button>I accept</button>
+    </div>
+  </div>
 </template>
 
 <script>
