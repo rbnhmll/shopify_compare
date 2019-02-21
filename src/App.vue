@@ -1,32 +1,28 @@
 <template>
   <v-app>
-    <v-content>
-      <v-container grid-list-lg>
-        <v-header />
-        <v-layout wrap grid-list>
-          <v-flex xs6>
-            <region-switcher />
-          </v-flex>
-          <v-flex xs6>
-            <timeframe-switcher />
-          </v-flex>
-        </v-layout>
+    <v-header />
+    <main>
+      <section class="options">
+        <region-switcher />
+        <timeframe-switcher />
+      </section>
+      <section class="input-form">
         <input-form />
-      </v-container>
-      <v-container>
-        <v-layout row fill-height>
-          <provider
-            v-for="rate in providerData"
-            :key="rate.name"
-            :rates="rate[region]"
-            @total="collectValues($event)"
-          />
-        </v-layout>
-      </v-container>
+      </section>
+      <section class="provider">
+        <provider
+          v-for="rate in providerData"
+          :key="rate.name"
+          :rates="rate[region]"
+          @total="collectValues($event)"
+        />
+      </section>
       <v-summary />
-      <v-footer />
-      <disclaimer />
-    </v-content>
+    </main>
+
+
+    <v-footer />
+    <disclaimer />
   </v-app>
 </template>
 
