@@ -9,11 +9,47 @@ export default new Vuex.Store({
   state: {
     region: 'CAD',
     months: 1,
-    totals: {
-      Etsy: null,
-      'Basic Shopify': null,
-      Shopify: null,
-      'Advanced Shopify': null,
+    providerCalculated: {
+      Etsy: {
+        total: null,
+        featureMatches: {
+          maxStaffAccounts: false,
+          giftCards: false,
+          proReports: false,
+          advReports: false,
+          shippingRates: false,
+        },
+      },
+      'Basic Shopify': {
+        total: null,
+        featureMatches: {
+          maxStaffAccounts: false,
+          giftCards: false,
+          proReports: false,
+          advReports: false,
+          shippingRates: false,
+        },
+      },
+      Shopify: {
+        total: null,
+        featureMatches: {
+          maxStaffAccounts: false,
+          giftCards: false,
+          proReports: false,
+          advReports: false,
+          shippingRates: false,
+        },
+      },
+      'Advanced Shopify': {
+        total: null,
+        featureMatches: {
+          maxStaffAccounts: 1,
+          giftCards: false,
+          proReports: false,
+          advReports: false,
+          shippingRates: false,
+        },
+      },
     },
     userInfo: {
       transactionCount: 10,
@@ -28,19 +64,15 @@ export default new Vuex.Store({
       shippingRates: false,
     },
     exchangeRates: {
-      USD_CAD: {
-        val: 0.75,
-      },
-      CAD_USD: {
-        val: 1.5,
-      },
+      CAD_USD: null,
+      USD_CAD: null,
     },
     providerData,
   },
   getters: {
     timeFrame: state => (state.months === 1 ? 'Monthly' : 'Yearly'),
     bestValue: (state) => {
-      const arr = Object.keys(state.totals).sort((a, b) => state.totals[a] - state.totals[b]);
+      const arr = Object.keys(state.providerCalculated).sort((a, b) => state.providerCalculated[a].total - state.providerCalculated[b].total);
       return arr[0];
     },
     avgRevenue: state => state.userInfo.transactionCount * state.userInfo.avgTransactionPrice || '',
@@ -58,15 +90,15 @@ export default new Vuex.Store({
       });
     },
     setTotals: (state, { name, total }) => {
-      Object.assign(state.totals, {
-        [name]: total,
+      Object.assign(state.providerCalculated[name], {
+        total,
       });
     },
     setMaxStaffAccounts: (state, value) => {
       state.reqs.maxStaffAccounts = value;
     },
     setGiftCard: (state, value) => {
-      state.reqs.giftCard = value;
+      state.reqs.giftCards = value;
     },
     setProReports: (state, value) => {
       state.reqs.proReports = value;
@@ -76,6 +108,12 @@ export default new Vuex.Store({
     },
     setShippingRates: (state, value) => {
       state.reqs.shippingRates = value;
+    },
+    setExchangeRates: (state, { CAD_USD, USD_CAD }) => {
+      Object.assign(state.exchangeRates, {
+        CAD_USD,
+        USD_CAD,
+      });
     },
   },
   actions: {
@@ -105,6 +143,15 @@ export default new Vuex.Store({
     },
     setShippingRates: (context, val) => {
       context.commit('setShippingRates', val);
+    },
+    getExchangeRates: (context) => {
+      const endpoint = 'https://free.currencyconverterapi.com/api/v6/convert?q=CAD_USD,USD_CAD&compact=ultra&apiKey=f3b0ddafa92827d8978f';
+
+      fetch(endpoint)
+        .then(response => response.json())
+        .then((response) => {
+          context.commit('setExchangeRates', response);
+        });
     },
   },
 });

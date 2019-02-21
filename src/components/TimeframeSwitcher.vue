@@ -26,8 +26,8 @@ export default {
       set(val) {
         this.$store.dispatch('setMonths', val);
       },
-    }
-  }
+    },
+  },
 };
 </script>
 

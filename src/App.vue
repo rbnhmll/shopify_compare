@@ -3,7 +3,7 @@
     <v-content>
       <v-container grid-list-lg>
         <v-header />
-        <v-layout wrap grid-list->
+        <v-layout wrap grid-list>
           <v-flex xs6>
             <region-switcher />
           </v-flex>
@@ -14,19 +14,18 @@
         <input-form />
       </v-container>
       <v-container>
-        <v-summary />
-        <section class="providers">
-          <v-layout row fill-height>
-            <provider
-              v-for="rate in providerData"
-              :key="rate.name"
-              :rates="rate[region]"
-              @total="collectValues($event)"
-            />
-          </v-layout>
-        </section>
+        <v-layout row fill-height>
+          <provider
+            v-for="rate in providerData"
+            :key="rate.name"
+            :rates="rate[region]"
+            @total="collectValues($event)"
+          />
+        </v-layout>
       </v-container>
+      <v-summary />
       <v-footer />
+      <disclaimer />
     </v-content>
   </v-app>
 </template>
@@ -39,6 +38,7 @@ import InputForm from './components/InputForm.vue';
 import VSummary from './components/VSummary.vue';
 import Provider from './components/Provider.vue';
 import VFooter from './components/VFooter.vue';
+import Disclaimer from './components/Disclaimer.vue';
 
 export default {
   name: 'App',
@@ -50,6 +50,7 @@ export default {
     TimeframeSwitcher,
     Provider,
     VFooter,
+    Disclaimer,
   },
   methods: {
     collectValues(val) {
@@ -72,6 +73,9 @@ export default {
     region() {
       return this.$store.state.region;
     },
+  },
+  created() {
+    this.$store.dispatch('getExchangeRates');
   },
 };
 </script>

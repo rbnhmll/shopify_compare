@@ -1,21 +1,16 @@
 <template>
   <v-flex>
-
-    <v-card
-      vs-color="primary"
-      :class="{ bestValue: isBestValue }"
-    >
-      <v-card-title
-        :vs-background-color="rates.brandColour"
-        :vs-title="rates.name"
-        :vs-fill="isBestValue"
-      ></v-card-title>
+    <v-card :class="{ bestValue: isBestValue }">
+      <best-banner
+        v-if="isBestValue"
+        :colour="rates.brandColour"
+      />
+      <v-card-title>
+        <v-layout column text-xs-center>
+          <h2>{{ rates.name }}</h2>
+        </v-layout>
+      </v-card-title>
       <v-card-text>
-        <best-banner
-          v-if="isBestValue"
-          :colour="rates.brandColour"
-        />
-        <h2>{{ rates.name }}</h2>
         <h5>Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}</h5>
         <h3>Cost per sale: {{ averageCostPerSale | money }}</h3>
         <h3>Fee % Per Sale: {{ feePercentagePerSale }}%</h3>
@@ -27,6 +22,7 @@
               v-for="feature in rates.additionalFeatures"
               :key="feature.name"
               v-if="feature.value"
+              :class="{'req': reqs[feature.id] <= rates.additionalFeatures[feature.id]}"
             >
               <span
                 v-if="typeof feature.value === 'number'"
@@ -34,12 +30,14 @@
             </li>
           </ul>
         </div>
+      </v-card-text>
+      <v-card-actions class="cta" v-if="rates.affiliate && isBestValue">
+        <h3 class="cta__message">Get started with {{ rates.name }}</h3>
         <affiliate-button
-          v-if="rates.affiliate && isBestValue" :link="rates.affiliate"
-          :name="rates.name"
+          :link="rates.affiliate"
           :colour="rates.brandColour"
         />
-      </v-card-text>
+      </v-card-actions>
     </v-card>
   </v-flex>
 </template>
@@ -61,6 +59,9 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
+    },
+    reqs() {
+      return this.$store.state.reqs;
     },
     salesFeeAmount() {
       return this.userInfo.avgTransactionPrice * this.rates.salesFeePercentage;
@@ -109,20 +110,29 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.vs-card
-  background #fff
-  flex 1 0 200px
+.v-card
+  height 100%
+  position relative
+  margin 0 1%
 
-  // padding 10px
-  &+.vs-card
-    margin-left 15px
+  &.bestValue
+    transition all 0.5s
+    transform scale(1.08)
+    box-shadow 0 0 20px rgba(0, 0, 0, 0.5)
+    flex 2 0 200px
+    z-index 1
 
-.bestValue
-  transition all 0.5s
-  transform scale(1.05)
-  box-shadow 0 0 20px rgba(0, 0, 0, 0.5)
-  flex 2 0 200px
+li
+  margin 5px
+  padding 5px
+  border-radius 3px
+  transition background 0.3s
 
-  .con-vs-card-header
-    color white !important
+  &.req
+    background #8BC34A
+
+.cta
+  text-align center
+  flex-direction column
+  padding 20px 0
 </style>

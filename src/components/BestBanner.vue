@@ -14,4 +14,6 @@ export default {
 <style scoped lang="stylus">
 header
   color #fff
+  padding 16px
+  text-align center
 </style>

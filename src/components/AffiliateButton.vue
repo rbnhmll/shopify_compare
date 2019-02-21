@@ -2,8 +2,9 @@
   <a
     :href="link"
     :style="{ backgroundColor: colour }"
+    target="_blank"
   >
-    Get started with {{ name }}
+    Sign up for free now!
   </a>
 </template>
 
@@ -18,8 +19,9 @@ export default {
 a
   text-decoration none
   color #fff
-  padding 5px 15px
-  display inline-block
+  padding 10px 15px
+  display block
   border-radius 4px
   font-weight bold
+  text-align center
 </style>

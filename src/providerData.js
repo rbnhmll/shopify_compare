@@ -40,22 +40,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 2,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: false,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: false,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: false,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: false,
         },
       },
@@ -74,22 +79,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 2,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: false,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: false,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: false,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: false,
         },
       },
@@ -110,22 +120,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 5,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: true,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: true,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: false,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: false,
         },
       },
@@ -144,22 +159,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 5,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: true,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: true,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: false,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: false,
         },
       },
@@ -180,22 +200,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 15,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: true,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: true,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: true,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: true,
         },
       },
@@ -214,22 +239,27 @@ export default {
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
           value: 15,
         },
         giftCards: {
           name: 'Gift Cards',
+          id: 'giftCards',
           value: true,
         },
         proReports: {
           name: 'Professional Reports',
+          id: 'proReports',
           value: true,
         },
         advReports: {
           name: 'Advanced report builder',
+          id: 'advReports',
           value: true,
         },
         shippingRates: {
           name: 'Third-party calculated shipping rates',
+          id: 'shippingRates',
           value: true,
         },
       },
@@ -248,22 +278,27 @@ export default {
   //     additionalFeatures: {
   //   maxStaffAccounts: {
   //     name: 'Staff Accounts',
+  //     id: 'maxStaffAccounts',
   //     value: 15,
   //   },
   //   giftCards: {
-  //     name: 'Gift Cards',
+  //     name: 'Gift Card
+  //     id: 'giftCards',
   //     value: true,
   //   },
   //   proReports: {
   //     name: 'Professional Reports',
+  //     id: 'proReports',
   //     value: true,
   //   },
   //   advReports: {
   //     name: 'Advanced report builder',
+  //     id: 'advReports',
   //     value: true,
   //   },
   //   shippingRates: {
   //     name: 'Third-party calculated shipping rates',
+  //     id: 'shippingRates',
   //     value: true,
   //   },
   // },
@@ -280,22 +315,27 @@ export default {
   //     additionalFeatures: {
   //   maxStaffAccounts: {
   //     name: 'Staff Accounts',
+  //     id: 'maxStaffAccounts',
   //     value: 15,
   //   },
   //   giftCards: {
-  //     name: 'Gift Cards',
+  //     name: 'Gift Card
+  //     id: 'giftCards',
   //     value: true,
   //   },
   //   proReports: {
   //     name: 'Professional Reports',
+  //     id: 'proReports',
   //     value: true,
   //   },
   //   advReports: {
   //     name: 'Advanced report builder',
+  //     id: 'advReports',
   //     value: true,
   //   },
   //   shippingRates: {
   //     name: 'Third-party calculated shipping rates',
+  //     id: 'shippingRates',
   //     value: true,
   //   },
   // },

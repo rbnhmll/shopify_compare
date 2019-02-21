@@ -70,97 +70,24 @@
         />
       </v-flex>
     </v-layout>
-
-    <h2>Advanced Options</h2>
-    <v-layout>
-      <v-slider
-        v-model="maxStaffAccounts"
-        min="2"
-        max="15"
-        thumb-label
-        label="Staff Accounts"
-        inverse-label
-      ></v-slider>
-      <v-text-field
-        v-model="maxStaffAccounts"
-        type="number"
-        min="2"
-        max="15"
-        solo
-      />
-      <v-checkbox
-        label="Gift Cards"
-        color="primary"
-        v-model="giftCards"
-      ></v-checkbox>
-      <v-checkbox
-        label="Professional Reports"
-        color="primary"
-        v-model="proReports"
-      ></v-checkbox>
-      <v-checkbox
-        label="Advanced report builder"
-        color="primary"
-        v-model="advReports"
-      ></v-checkbox>
-      <v-checkbox
-        label="Third-party calculated shipping rates"
-        color="primary"
-        v-model="shippingRates"
-      ></v-checkbox>
-    </v-layout>
+    <!-- <advanced-options /> -->
   </v-form>
 </template>
 
 <script>
+import AdvancedOptions from './AdvancedOptions.vue';
+
 export default {
   name: 'InputForm',
+  components: {
+    AdvancedOptions,
+  },
   methods: {
     updateField(field, value) {
       this.$store.dispatch('setUserInfo', { field, value });
     },
   },
   computed: {
-    maxStaffAccounts: {
-      get() {
-        return this.$store.state.reqs.maxStaffAccounts;
-      },
-      set(value) {
-        this.$store.dispatch('setMaxStaffAccounts', value);
-      },
-    },
-    giftCards: {
-      get() {
-        return this.$store.state.reqs.giftCards;
-      },
-      set(value) {
-        this.$store.dispatch('setGiftCard', value);
-      },
-    },
-    proReports: {
-      get() {
-        return this.$store.state.reqs.proReports;
-      },
-      set(value) {
-        this.$store.dispatch('setProReports', value);
-      },
-    },
-    advReports: {
-      get() {
-        return this.$store.state.reqs.advReports;
-      },
-      set(value) {
-        this.$store.dispatch('setAdvReports', value);
-      },
-    },
-    shippingRates: {
-      get() {
-        return this.$store.state.reqs.shippingRates;
-      },
-      set(value) {
-        this.$store.dispatch('setShippingRates', value);
-      },
-    },
     userInfo() {
       return this.$store.state.userInfo;
     },
