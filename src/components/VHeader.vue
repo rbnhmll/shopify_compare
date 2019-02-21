@@ -1,9 +1,7 @@
 <template>
-  <v-toolbar
-    app
-  >
-    <v-toolbar-title v-text="title"></v-toolbar-title>
-  </v-toolbar>
+  <header>
+    <h1>Shopify Compare</h1>
+  </header>
 </template>
 
 <script>
