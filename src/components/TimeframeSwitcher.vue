@@ -1,10 +1,13 @@
 <template>
-  <v-select
-    :items="options"
-    v-model.number="months"
-    label="Timeframe"
-    solo
-  ></v-select>
+  <div>
+    <label for="timeframe">Timeframe</label>
+    <select name="Timeframe" id="timeframe" v-model.number="months">
+      <option v-for="option in options"
+        :value="option.value"
+        :key="option.text"
+      >{{ option.text }}</option>
+    </select>
+  </div>
 </template>
 
 <script>

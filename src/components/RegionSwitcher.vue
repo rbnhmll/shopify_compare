@@ -1,10 +1,13 @@
 <template>
-  <v-select
-    :items="options"
-    v-model="region"
-    label="Region"
-    solo
-  ></v-select>
+  <div>
+    <label for="region">Region</label>
+    <select name="Region" id="region" v-model.number="region">
+      <option v-for="option in options"
+        :value="option"
+        :key="option"
+      >{{ option }}</option>
+    </select>
+  </div>
 </template>
 
 <script>
