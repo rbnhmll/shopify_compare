@@ -1,45 +1,41 @@
 <template>
-  <v-flex>
-    <v-card :class="{ bestValue: isBestValue }">
-      <best-banner
-        v-if="isBestValue"
+  <article :class="{ bestValue: isBestValue }">
+    <best-banner
+      v-if="isBestValue"
+      :colour="rates.brandColour"
+    />
+    <div>
+      <h2>{{ rates.name }}</h2>
+    </div>
+    <div>
+      <h5>Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}</h5>
+      <h3>Cost per sale: {{ averageCostPerSale | money }}</h3>
+      <h3>Fee % Per Sale: {{ feePercentagePerSale }}%</h3>
+      <h3>Total Monthly Fees: {{ totalFeesPerMonth | money }}</h3>
+      <div v-if="rates.additionalFeatures">
+        <h4>Plus:</h4>
+        <ul>
+          <li
+            v-for="feature in rates.additionalFeatures"
+            :key="feature.name"
+            v-if="feature.value"
+            :class="{'req': reqs[feature.id] <= rates.additionalFeatures[feature.id]}"
+          >
+            <span
+              v-if="typeof feature.value === 'number'"
+            >{{ feature.value }}</span> {{ feature.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta" v-if="rates.affiliate && isBestValue">
+      <h3 class="cta__message">Get started with {{ rates.name }}</h3>
+      <affiliate-button
+        :link="rates.affiliate"
         :colour="rates.brandColour"
       />
-      <v-card-title>
-        <v-layout column text-xs-center>
-          <h2>{{ rates.name }}</h2>
-        </v-layout>
-      </v-card-title>
-      <v-card-text>
-        <h5>Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}</h5>
-        <h3>Cost per sale: {{ averageCostPerSale | money }}</h3>
-        <h3>Fee % Per Sale: {{ feePercentagePerSale }}%</h3>
-        <h3>Total Monthly Fees: {{ totalFeesPerMonth | money }}</h3>
-        <div v-if="rates.additionalFeatures">
-          <h4>Plus:</h4>
-          <ul>
-            <li
-              v-for="feature in rates.additionalFeatures"
-              :key="feature.name"
-              v-if="feature.value"
-              :class="{'req': reqs[feature.id] <= rates.additionalFeatures[feature.id]}"
-            >
-              <span
-                v-if="typeof feature.value === 'number'"
-              >{{ feature.value }}</span> {{ feature.name }}
-            </li>
-          </ul>
-        </div>
-      </v-card-text>
-      <v-card-actions class="cta" v-if="rates.affiliate && isBestValue">
-        <h3 class="cta__message">Get started with {{ rates.name }}</h3>
-        <affiliate-button
-          :link="rates.affiliate"
-          :colour="rates.brandColour"
-        />
-      </v-card-actions>
-    </v-card>
-  </v-flex>
+    </div>
+  </article>
 </template>
 
 <script>
@@ -110,7 +106,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.v-card
+article
   height 100%
   position relative
   margin 0 1%

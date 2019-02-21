@@ -11,14 +11,7 @@
         <h2>User Inputs</h2>
         <input-form />
       </section>
-      <section class="provider">
-        <provider
-          v-for="rate in providerData"
-          :key="rate.name"
-          :rates="rate[region]"
-          @total="collectValues($event)"
-        />
-      </section>
+      <provider-loop />
       <v-summary />
     </main>
     <v-footer />
@@ -32,7 +25,7 @@ import RegionSwitcher from './components/RegionSwitcher.vue';
 import TimeframeSwitcher from './components/TimeframeSwitcher.vue';
 import InputForm from './components/InputForm.vue';
 import VSummary from './components/VSummary.vue';
-import Provider from './components/Provider.vue';
+import ProviderLoop from './components/ProviderLoop.vue';
 import VFooter from './components/VFooter.vue';
 import Disclaimer from './components/Disclaimer.vue';
 
@@ -44,30 +37,16 @@ export default {
     VSummary,
     RegionSwitcher,
     TimeframeSwitcher,
-    Provider,
+    ProviderLoop,
     VFooter,
     Disclaimer,
   },
-  methods: {
-    collectValues(val) {
-      this.$store.dispatch('setTotals', val);
-    },
-  },
   computed: {
-    providerData() {
-      return this.$store.state.providerData;
-    },
     currentYear() {
       return (new Date()).getFullYear();
     },
     months() {
       return this.$store.state.months;
-    },
-    timeframe() {
-      return this.$store.getters.timeFrame;
-    },
-    region() {
-      return this.$store.state.region;
     },
   },
   created() {
@@ -81,6 +60,4 @@ export default {
     max-width 800px
     width 100%
     margin 0 auto
-  section
-    border 1px solid #bada55
 </style>

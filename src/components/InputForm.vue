@@ -9,7 +9,7 @@
       unitAfter="+"
       :min="1"
       :max="1000"
-      @change="updateField('transactionCount', $event.target.value)"
+      @change="updateField('transactionCount', $event)"
     />
 
     <v-range
@@ -20,7 +20,7 @@
       unitAfter="+"
       :min="1"
       :max="1000"
-      @change="updateField('avgTransactionPrice', $event.target.value)"
+      @change="updateField('avgTransactionPrice', $event)"
     />
 
     <v-range
@@ -31,7 +31,7 @@
       unitAfter="+"
       :min="1"
       :max="500"
-      @change="updateField('avgShippingCost', $event.target.value)"
+      @change="updateField('avgShippingCost', $event)"
     />
     <!-- <advanced-options /> -->
   </form>

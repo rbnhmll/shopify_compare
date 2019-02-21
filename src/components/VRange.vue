@@ -12,6 +12,7 @@
         :step="step"
         type="range"
         :name="name"
+        v-model.number="selection"
         v-on="listeners">
       <span
         :style="valPosition"
@@ -69,29 +70,29 @@ export default {
   },
   data() {
     return {
+      selection: '',
     };
   },
   computed: {
     listeners() {
       return {
-        ...this.$listeners,
-        input: event => this.$emit('change', event.target.value),
+        input: () => this.$emit('change', this.selection),
       };
     },
     compRange() {
       let range = '';
-      if (this.value === this.min) {
-        range = `< ${this.unitBefore}${this.value} ${this.unitAfter}`;
-      } else if (this.value === this.max) {
-        range = `${this.unitBefore}${this.value} ${this.unitAfter} +`;
+      if (this.selection === this.min) {
+        range = `< ${this.unitBefore}${this.selection} ${this.unitAfter}`;
+      } else if (this.selection === this.max) {
+        range = `${this.unitBefore}${this.selection} ${this.unitAfter} +`;
       } else {
-        range = `${this.unitBefore}${this.value} ${this.unitAfter}`;
+        range = `${this.unitBefore}${this.selection} ${this.unitAfter}`;
       }
       return range;
     },
     valPosition() {
       const range = this.max - this.min;
-      const ratio = this.value - this.min;
+      const ratio = this.selection - this.min;
       const posPercent = (ratio / range) * 100;
 
       const offset = 15;
@@ -105,7 +106,7 @@ export default {
     },
   },
   mounted() {
-    this.selection = this.defaultValue;
+    this.selection = this.value;
   },
 };
 </script>
