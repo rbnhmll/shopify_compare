@@ -1,16 +1,8 @@
 <template>
-  <div class="wrapper">
+  <div>
     <v-header />
-    <main>
-      <section class="options">
-        <h2>Options</h2>
-        <region-switcher />
-        <timeframe-switcher />
-      </section>
-      <section class="input-form">
-        <h2>User Inputs</h2>
-        <input-form />
-      </section>
+    <main class="wrapper">
+      <input-form />
       <provider-loop />
       <v-summary />
     </main>
@@ -21,8 +13,6 @@
 
 <script>
 import VHeader from './components/VHeader.vue';
-import RegionSwitcher from './components/RegionSwitcher.vue';
-import TimeframeSwitcher from './components/TimeframeSwitcher.vue';
 import InputForm from './components/InputForm.vue';
 import VSummary from './components/VSummary.vue';
 import ProviderLoop from './components/ProviderLoop.vue';
@@ -35,8 +25,6 @@ export default {
     VHeader,
     InputForm,
     VSummary,
-    RegionSwitcher,
-    TimeframeSwitcher,
     ProviderLoop,
     VFooter,
     Disclaimer,
@@ -56,8 +44,18 @@ export default {
 </script>
 
 <style lang="stylus">
-  .wrapper
-    max-width 800px
-    width 100%
-    margin 0 auto
+@import './assets/styles/normalize'
+@import './assets/styles/vars'
+@import './assets/styles/mixins'
+
+section
+  border 2px solid grey
+
+.wrapper
+  display grid
+  grid-template-columns 1fr
+  grid-gap 50px
+  max-width 800px
+  width 100%
+  margin 0 auto
 </style>
