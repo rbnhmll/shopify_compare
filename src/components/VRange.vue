@@ -1,9 +1,7 @@
 <template>
   <section class="rangeSlider">
+    <label :for="id">{{ name }}</label>
     <div class="rangeSlider__wrapper">
-      <label
-        :for="id"
-        class="visuallyhidden">{{ name }}</label>
       <input
         v-bind="$attrs"
         :id="id"
@@ -16,13 +14,13 @@
         v-on="listeners">
       <span
         :style="valPosition"
-        class="valueMarker">{{ compRange }}</span>
-        {{value}}
+        class="valueMarker">{{ selection }}</span>
     </div>
-    <div class="rangeLimits">
-      <span>&#60; {{ unitBefore }}{{ min }} {{ unitAfter }}</span>
-      <span>{{ unitBefore }}{{ max }} {{ unitAfter }} +</span>
-    </div>
+    <input
+      type="number"
+      v-model.number="selection"
+      v-on="listeners"
+    >
   </section>
 </template>
 
@@ -36,14 +34,6 @@ export default {
       default: '',
     },
     id: {
-      type: String,
-      default: '',
-    },
-    unitBefore: {
-      type: String,
-      default: '',
-    },
-    unitAfter: {
       type: String,
       default: '',
     },
@@ -79,24 +69,13 @@ export default {
         input: () => this.$emit('change', this.selection),
       };
     },
-    compRange() {
-      let range = '';
-      if (this.selection === this.min) {
-        range = `< ${this.unitBefore}${this.selection} ${this.unitAfter}`;
-      } else if (this.selection === this.max) {
-        range = `${this.unitBefore}${this.selection} ${this.unitAfter} +`;
-      } else {
-        range = `${this.unitBefore}${this.selection} ${this.unitAfter}`;
-      }
-      return range;
-    },
     valPosition() {
       const range = this.max - this.min;
       const ratio = this.selection - this.min;
       const posPercent = (ratio / range) * 100;
 
-      const offset = 15;
-      const offsetRange = -30;
+      const offset = 10;
+      const offsetRange = -20;
       // const offsetRatio = posPercent * -15;
       // const offsetPercent = (offsetRatio / -30) * 100;
 
@@ -112,18 +91,20 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-// @import '~assets/styles/_vars'
-// @import '~assets/styles/_mixins'
-
-h3
-  color $darkblue
-  font-size 1.7rem
+@import '../assets/styles/mixins'
 
 .rangeSlider__wrapper
   position relative
 
+.rangeSlider
+  display grid
+  grid-template-columns 150px 1fr 50px
+  align-items center
+  grid-gap 20px
+
 input[type='range']
-  // -webkit-appearance none
+  -webkit-appearance none
+  appearance none
   width 100%
   display block
   // background-color $darkblue
@@ -133,12 +114,14 @@ input[type='range']
   margin 0 auto
   outline 0
 
-  &::-webkit-slider-thumb
-    // -webkit-appearance none
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb
+    -webkit-appearance none
+    appearance none
     // background-color $turquoise
     background-color blue
-    width 30px
-    height 30px
+    width 20px
+    height 20px
     border-radius 50%
     cursor pointer
     transition(transform)
@@ -146,10 +129,15 @@ input[type='range']
     &:active
       transform scale(1.2)
 
-  &:hover, &:active, &:focus
+  &:hover,
+  &:active,
+  &:focus
     + .valueMarker
       opacity 1
       transform translateX(-50%) scale(1)
+
+input[type='number']
+  width auto
 
 .valueMarker
   padding 5px

@@ -116,10 +116,9 @@ article
     transform scale(1.08)
     box-shadow 0 0 20px rgba(0, 0, 0, 0.5)
     flex 2 0 200px
-    z-index 1
+    z-index 10
 
 li
-  margin 5px
   padding 5px
   border-radius 3px
   transition background 0.3s
