@@ -40,15 +40,6 @@ export default {
 @import '../assets/styles/mixins'
 
 .providers
-  // display grid
-  // grid-template-columns 1fr
-  // grid-gap 20px
   display flex
   flex-wrap wrap
-  // @media screen and (min-width 768px)
-  //   grid-template-columns repeat(2, 1fr)
-  // @media screen and (min-width 1224px)
-  //   grid-template-columns repeat(4, 1fr)
-
-
 </style>

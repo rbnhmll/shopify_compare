@@ -8,7 +8,7 @@ Vue.use(vueSmoothScroll);
 
 Vue.config.productionTip = false;
 
-Vue.filter('money', value => `$${value.toFixed(2)}`);
+Vue.filter('money', value => `$${value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`);
 
 Vue.filter('camel', value => value
   .replace(/\s(.)/g, $1 => $1.toUpperCase())

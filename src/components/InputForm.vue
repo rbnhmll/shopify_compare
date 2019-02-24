@@ -3,13 +3,9 @@
     <div class="wrapper">
       <form @submit.prevent class="input-form">
 
-        <div class="switches">
-          <region-switcher />
-          <timeframe-switcher />
-        </div>
+        <switches />
 
         <div class="sliders">
-
           <v-range
             :value="userInfo.transactionCount"
             name="# of Transactions"
@@ -18,7 +14,6 @@
             :max="1000"
             @change="updateField('transactionCount', $event)"
           />
-
           <v-range
             :value="userInfo.avgTransactionPrice"
             name="Avg. Transaction Price"
@@ -28,7 +23,6 @@
             price
             @change="updateField('avgTransactionPrice', $event)"
           />
-
           <v-range
             :value="userInfo.avgShippingCost"
             name="Avg. Shipping Cost"
@@ -46,8 +40,7 @@
 </template>
 
 <script>
-import RegionSwitcher from './RegionSwitcher.vue';
-import TimeframeSwitcher from './TimeframeSwitcher.vue';
+import Switches from './Switches.vue';
 import VRange from './VRange.vue';
 import AdvancedOptions from './AdvancedOptions.vue';
 
@@ -56,8 +49,7 @@ export default {
   components: {
     VRange,
     AdvancedOptions,
-    RegionSwitcher,
-    TimeframeSwitcher,
+    Switches,
   },
   methods: {
     updateField(field, value) {
@@ -83,11 +75,9 @@ form
   background #fff
   border-radius var(--radius)
   shadow()
+  @media screen and (min-width 768px)
+    grid-template-columns auto 1fr
 
-.switches
-  display flex
-  & > *
-    flex 1
 
 .sliders
   display grid

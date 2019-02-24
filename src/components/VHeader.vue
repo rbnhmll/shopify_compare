@@ -20,7 +20,7 @@ export default {
 <style scoped lang="stylus">
 header
   padding 10px 0 110px
-  background linear-gradient(to bottom right, #CC4BF0, #2BB7FC)
+  background linear-gradient(to bottom right, var(--purple), var(--turquoise))
   margin-bottom -100px
 
 .content

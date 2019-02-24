@@ -2,6 +2,7 @@ export default {
   etsy: {
     CAD: {
       name: 'Etsy',
+      id: 'etsy',
       affiliate: 'https://www.etsy.com/ca/sell',
       brandColour: '#F56400',
       currency: 'CAD',
@@ -14,6 +15,7 @@ export default {
     },
     USD: {
       name: 'Etsy',
+      id: 'etsy',
       affiliate: 'https://www.etsy.com/sell',
       brandColour: '#F56400',
       currency: 'USD',
@@ -28,6 +30,7 @@ export default {
   basicShopify: {
     CAD: {
       name: 'Basic Shopify',
+      id: 'basicShopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',
@@ -67,6 +70,7 @@ export default {
     },
     USD: {
       name: 'Basic Shopify',
+      id: 'basicShopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',
@@ -108,6 +112,7 @@ export default {
   shopify: {
     CAD: {
       name: 'Shopify',
+      id: 'shopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',
@@ -147,6 +152,7 @@ export default {
     },
     USD: {
       name: 'Shopify',
+      id: 'shopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',
@@ -188,6 +194,7 @@ export default {
   advancedShopify: {
     CAD: {
       name: 'Advanced Shopify',
+      id: 'advancedShopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',
@@ -227,6 +234,7 @@ export default {
     },
     USD: {
       name: 'Advanced Shopify',
+      id: 'advancedShopify',
       affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
       brandColour: '#95BF47',
       currency: 'USD',

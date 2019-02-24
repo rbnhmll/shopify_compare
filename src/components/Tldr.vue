@@ -1,19 +1,17 @@
 <template>
   <section class="tldr">
-    <div class="wrapper">
-      <div class="content">
-        <h2 class="">tl;dr</h2>
-        <h3>Best value for you right now:</h3>
-        <div class="cta">
-          <v-button
-            :href="`${bestValue}` | camel | id"
-            shape="square"
-            v-smooth-scroll="{ duration: 500, offset: -35 }"
-          >
-            {{ bestValue }}
-            <i class="fas fa-chevron-down"></i>
-          </v-button>
-        </div>
+    <div class="wrapper wrapper--mini content">
+      <h2 class="hl">tl;dr</h2>
+      <p>Best value for you right now:</p>
+      <div class="cta">
+        <v-button
+          :href="`${bestValue.name}` | camel | id"
+          shape="square"
+          v-smooth-scroll="{ duration: 500, offset: -35 }"
+        >
+          {{ bestValue.name }}
+          <i class="fas fa-chevron-down"></i>
+        </v-button>
       </div>
     </div>
   </section>
@@ -38,10 +36,6 @@ export default {
 <style lang="stylus" scoped>
 section
   background var(--white)
-
-.content
-  padding var(--padding)
-  padding-top 0
 
 .cta
   text-align center

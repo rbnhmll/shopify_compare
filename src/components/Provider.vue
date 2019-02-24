@@ -5,23 +5,43 @@
       :colour="rates.brandColour"
     />
     <div class="content">
-      <h2>{{ rates.name }}</h2>
+      <h2 class="hl provider__name">{{ rates.name }}</h2>
       <ul class="rates">
         <li>
           <i class="fas fa-calendar-alt"></i>
-          Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}
+          Monthly Fee: {{ rates.monthlyFee | money }}
+          <span class="currency">
+            <small>{{ rates.currency }}</small>
+            <icon-tooltip v-if="rates.monthlyFee > 0">
+              Billed in {{ rates.currency }}
+            </icon-tooltip>
+          </span>
+        </li>
+        <li>
+          <i class="fas fa-list-alt"></i>
+          Item listing fee: {{ rates.listingFeeFixed | money }}
         </li>
         <li>
           <i class="fas fa-credit-card"></i>
-          Cost per sale: {{ averageCostPerSale | money }}
-        </li>
-        <li>
-          <i class="fas fa-percentage"></i>
-          Fee % Per Sale: {{ feePercentagePerSale }}%
+          Processing Fees: {{ (paymentProcessingFeePercentage * 100).toFixed(1) }}% + {{ paymentProcessingFeeFixed | money }}
+          <icon-tooltip v-if="rates.monthlyFee > 0">
+              Billed in {{ region }}
+            </icon-tooltip>
+          <ul>
+            <li>
+              Total Fee % Per Sale: {{ feePercentagePerSale }}%
+            </li>
+            <li>
+              Total Cost Per Sale: {{ averageCostPerSale | money }}
+            </li>
+          </ul>
         </li>
         <li>
           <i class="fas fa-equals"></i>
-          Total Monthly Fees: {{ totalFeesPerMonth | money }}
+          Total Fees: {{ totalFeesPerMonth | money }} <small>{{ region }}</small>
+          <icon-tooltip>
+            Based on monthly sales
+          </icon-tooltip>
         </li>
       </ul>
       <div v-if="rates.additionalFeatures">
@@ -35,30 +55,42 @@
           >
             <span
               v-if="typeof feature.value === 'number'"
-            >{{ feature.value }}</span> {{ feature.name }}
+            >{{ feature.value }}</span>
+            {{ feature.name }}
           </li>
         </ul>
       </div>
     </div>
-    <div class="cta" v-if="rates.affiliate && isBestValue">
-      <h3 class="cta__message">Get started with {{ rates.name }}</h3>
-      <v-button :href="rates.affiliate" target="_blank">Sign up for free now!</v-button>
-    </div>
+    <cta v-if="rates.affiliate && isBestValue" :rates="rates" />
   </article>
 </template>
 
 <script>
 import VButton from './VButton.vue';
+import IconTooltip from './IconTooltip.vue';
 import BestBanner from './BestBanner.vue';
+import Cta from './Cta.vue';
 
 export default {
   name: 'Provider',
-  props: ['rates'],
+  props: {
+    rates: {
+      type: Object,
+    },
+  },
   components: {
     VButton,
+    IconTooltip,
     BestBanner,
+    Cta,
   },
   computed: {
+    region() {
+      return this.$store.state.region;
+    },
+    exchangeRates() {
+      return this.$store.state.exchangeRates;
+    },
     bestValue() {
       return this.$store.state.bestValue;
     },
@@ -71,14 +103,23 @@ export default {
     salesFeeAmount() {
       return this.userInfo.avgTransactionPrice * this.rates.salesFeePercentage;
     },
+    paymentProcessingFeeFixed() {
+      return this.rates.paymentProcessingFeeFixed;
+    },
+    paymentProcessingFeePercentage() {
+      return this.rates.paymentProcessingFeePercentage;
+    },
     paymentProcessingFeeAmount() {
-      return this.userInfo.avgTransactionPrice * this.rates.paymentProcessingFeePercentage;
+      return this.userInfo.avgTransactionPrice * this.paymentProcessingFeePercentage;
     },
     shippingProcessingFeeAmount() {
       return this.userInfo.avgShippingCost * this.rates.shippingProcessingPercentage;
     },
     proratedMonthlyFee() {
-      return this.rates.monthlyFee / (this.userInfo.transactionCount / this.$store.state.months);
+      const monthlyFee = this.region === 'CAD'
+        ? this.rates.monthlyFee * this.exchangeRates.USD_CAD
+        : this.rates.monthlyFee;
+      return monthlyFee / (this.userInfo.transactionCount / this.$store.state.months);
     },
     averageCostPerSale() {
       return this.salesFeeAmount
@@ -93,7 +134,7 @@ export default {
       this.averageCostPerSale) /
       this.$store.state.months;
       this.$emit('total', {
-        name: this.rates.name,
+        name: this.rates.id,
         total,
       });
       return total;
@@ -104,11 +145,10 @@ export default {
       return percent !== Infinity ? percent : '';
     },
     isBestValue() {
-      let best = false;
-      if (this.$store.getters.bestValue === this.rates.name) {
-        best = true;
+      if (this.$store.getters.bestValue.name === this.rates.name) {
+        return true;
       }
-      return best;
+      return false;
     },
   },
 };
@@ -135,34 +175,29 @@ article
     z-index 10
     shadow(0.3)
 
-.content,
-.cta
-  padding var(--padding)
-
-.cta
-  background var(--lightgrey)
-
-.cta__message
-  margin-top 0
 
 .rates
   list-style-type none
   padding 0
   margin 0
   li
-    padding: 5px
+    padding: 3px
+    padding-left 0
   i
+    display inline-flex
+    justify-content center
     width 20px
+    color var(--purple)
+  ul
+    font-size 1.4rem
+    line-height 1
 
 .plus
+  font-size 1.4rem
   // border-radius 3px
   // padding 5px
   // transition background 0.3s
 
   // &.req
   //   background #8BC34A
-
-.cta
-  text-align center
-  flex-direction column
 </style>

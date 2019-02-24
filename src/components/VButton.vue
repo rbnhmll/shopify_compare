@@ -34,7 +34,8 @@ export default {
 
 button,
 a
-  color inherit
+  // color inherit
+  color var(--white)
   text-decoration none
   border none
   display inline-flex

@@ -1,13 +1,14 @@
 <template>
   <label for="region">
     Region
-    <select name="Region" id="region" v-model.number="region">
-      <option v-for="option in options"
-        :value="option"
-        :key="option"
-      >{{ option }}</option>
-    </select>
-
+    <div class="select-wrapper">
+      <select name="Region" id="region" v-model.number="region">
+        <option v-for="option in options"
+          :value="option"
+          :key="option"
+        >{{ option }}</option>
+      </select>
+    </div>
   </label>
 </template>
 

@@ -10,7 +10,8 @@ export default new Vuex.Store({
     region: 'CAD',
     months: 1,
     providerCalculated: {
-      Etsy: {
+      etsy: {
+        name: 'Etsy',
         total: null,
         featureMatches: {
           maxStaffAccounts: false,
@@ -20,7 +21,8 @@ export default new Vuex.Store({
           shippingRates: false,
         },
       },
-      'Basic Shopify': {
+      basicShopify: {
+        name: 'Basic Shopify',
         total: null,
         featureMatches: {
           maxStaffAccounts: false,
@@ -30,7 +32,8 @@ export default new Vuex.Store({
           shippingRates: false,
         },
       },
-      Shopify: {
+      shopify: {
+        name: 'Shopify',
         total: null,
         featureMatches: {
           maxStaffAccounts: false,
@@ -40,10 +43,11 @@ export default new Vuex.Store({
           shippingRates: false,
         },
       },
-      'Advanced Shopify': {
+      advancedShopify: {
+        name: 'Advanced Shopify',
         total: null,
         featureMatches: {
-          maxStaffAccounts: 1,
+          maxStaffAccounts: null,
           giftCards: false,
           proReports: false,
           advReports: false,
@@ -75,7 +79,8 @@ export default new Vuex.Store({
       const arr = Object
         .keys(state.providerCalculated)
         .sort((a, b) => state.providerCalculated[a].total - state.providerCalculated[b].total);
-      return arr[0];
+      const select = arr[0];
+      return state.providerData[select][state.region];
     },
     avgRevenue: state => state.userInfo.transactionCount * state.userInfo.avgTransactionPrice || '',
   },
@@ -86,36 +91,15 @@ export default new Vuex.Store({
     setRegion: (state, payload) => {
       Vue.set(state, 'region', payload);
     },
-    setUserInfo: (state, { field, value }) => {
-      Object.assign(state.userInfo, {
-        [field]: value,
-      });
-    },
-    setTotals: (state, { name, total }) => {
-      Object.assign(state.providerCalculated[name], {
-        total,
-      });
-    },
+    setUserInfo: (state, { field, value }) => Vue.set(state.userInfo, field, value),
+    setTotals: (state, { name, total }) => Vue.set(state.providerCalculated[name], 'total', total),
     setMaxStaffAccounts: (state, value) => {
       Vue.set(state.reqs, 'maxStaffAccounts', value);
-      // state.reqs.maxStaffAccounts = value;
     },
-    setGiftCard: (state, value) => {
-      Vue.set(state.reqs, 'giftCards', value);
-      // state.reqs.giftCards = value;
-    },
-    setProReports: (state, value) => {
-      Vue.set(state.reqs, 'proReports', value);
-      // state.reqs.proReports = value;
-    },
-    setAdvReports: (state, value) => {
-      Vue.set(state.reqs, 'advReports', value);
-      // state.reqs.advReports = value;
-    },
-    setShippingRates: (state, value) => {
-      Vue.set(state.reqs, 'shippingRates', value);
-      // state.reqs.shippingRates = value;
-    },
+    setGiftCard: (state, value) => Vue.set(state.reqs, 'giftCards', value),
+    setProReports: (state, value) => Vue.set(state.reqs, 'proReports', value),
+    setAdvReports: (state, value) => Vue.set(state.reqs, 'advReports', value),
+    setShippingRates: (state, value) => Vue.set(state.reqs, 'shippingRates', value),
     setExchangeRates: (state, { CAD_USD, USD_CAD }) => {
       Object.assign(state.exchangeRates, {
         CAD_USD,

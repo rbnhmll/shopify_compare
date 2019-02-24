@@ -1,6 +1,6 @@
 <template>
   <div class="rangeSlider">
-    <label :for="id">{{ name }}</label>
+    <label :for="id"><span class="hl">{{ name }}</span></label>
     <div class="input-wrapper">
       <input
         v-bind="$attrs"
@@ -128,11 +128,12 @@ input[type='range']
   &::-moz-range-thumb
     -webkit-appearance none
     appearance none
-    background-color var(--turquoise)
+    background-color var(--purple)
     width 20px
     height 20px
     border-radius 50%
     cursor pointer
+    border none
     transition(transform)
 
     &:active
@@ -153,6 +154,11 @@ input[type='number']
   width 100%
   padding-left 20px
   border none
+  border-bottom 3px solid transparent
+  &:hover,
+  &:active,
+  &:focus
+    border-bottom-color var(--yellow)
 
 .price
   color var(--grey)
@@ -162,11 +168,11 @@ input[type='number']
   left 5px
 
 .valueMarker
-  color var(---white)
+  color var(--white)
   padding 5px
   position absolute
-  bottom calc(100% + 25px)
-  background var(--turquoise)
+  bottom calc(100% + 15px)
+  background var(--purple)
   border-radius 3px
   transform translateX(-50%) scale(0.7)
   opacity 0
@@ -181,7 +187,7 @@ input[type='number']
     top 100%
     left 50%
     transform translateX(-50%)
-    border 10px solid var(--turquoise)
+    border 5px solid var(--purple)
     border-bottom-color transparent
     border-left-color transparent
     border-right-color transparent

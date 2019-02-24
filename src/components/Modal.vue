@@ -2,14 +2,15 @@
   <div class="skrim">
     <div class="modal">
       <header>
-        Disclaimer
+        ⚠️ Disclaimer
       </header>
       <div class="content">
         <ul class="disclaimers">
-          <li><p>This tool is made for reference only, and does not guarantee the accurance of any of the information or pricing provided.</p></li>
-          <li><p>Shopify pricing is shown in USD because that is the currency they bill in.</p></li>
-          <li><p>Other currency conversions are estimates based off of an external resource. Do your homework, and double check conversions.</p></li>
-          <li><p>Sign up links include affilate paramters.</p></li>
+          <li><p>This tool is made for reference only, and does not guarantee the accurancy of any of the information or pricing provided.</p></li>
+          <li><p>Other currency conversions are estimates based off of an external resource. Do your homework, and double check conversion rates.</p></li>
+          <li><p>Shopify sign up links contain affilate parameters to help support the development of this site.</p></li>
+          <li><p>This site is not associated in any way with Shopify, and as such pricing could change without warning.</p></li>
+          <li><p>This tool is in beta. If you notice any issues or comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shopify Compare">email me</a> 😺.</p></li>
         </ul>
 
         <v-button
@@ -59,7 +60,7 @@ export default {
   z-index 30
 
 .modal
-  max-width 600px
+  max-width 500px
   width 90%
   background #fff
   border-radius var(--radius)
@@ -71,7 +72,7 @@ header,
   padding: var(--padding)
 
 header
-  background var(--grey)
+  background var(--lightgrey)
 
 .disclaimers
   font-size 1.2rem

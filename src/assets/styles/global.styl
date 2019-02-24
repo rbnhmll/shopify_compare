@@ -15,6 +15,9 @@ body
   width 90%
   margin 0 auto
 
+.wrapper--mini
+  max-width 600px
+
 for n in (1..6)
   h{n},.h{n}
     font-weight 400
@@ -37,3 +40,14 @@ fieldset
   margin 0
   padding 0
   border none
+
+.hl
+  display inline-block
+  color var(--purple)
+  border-bottom 3px solid var(--yellow)
+
+.content
+  padding var(--padding)
+  for n in (1..6)
+    & > h{n}:first-child
+      margin-top 0
