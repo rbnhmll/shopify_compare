@@ -22,5 +22,9 @@ export default {
 
 <style scoped lang="stylus">
 footer
-  text-align center
+  justify-content center
+  font-size 1.2rem
+  background var(--black)
+  display flex
+  color var(--white)
 </style>

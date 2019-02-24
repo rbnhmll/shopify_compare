@@ -5,12 +5,17 @@
         Disclaimer
       </header>
       <div class="content">
-        <p>This tool is made for reference only, and does not guarantee the accurance of any of the information or pricing provided.</p>
-        <p>Sign up links include affilate paramters.</p>
+        <ul class="disclaimers">
+          <li><p>This tool is made for reference only, and does not guarantee the accurance of any of the information or pricing provided.</p></li>
+          <li><p>Shopify pricing is shown in USD because that is the currency they bill in.</p></li>
+          <li><p>Other currency conversions are estimates based off of an external resource. Do your homework, and double check conversions.</p></li>
+          <li><p>Sign up links include affilate paramters.</p></li>
+        </ul>
 
         <v-button
           @click.native="close"
-          type="square"
+          shape="square"
+          type="button"
         >
           I accept
         </v-button>
@@ -33,9 +38,7 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener('keyup', (e) => {
-      e.keyCode === 27 ? this.close() : false;
-    });
+    document.addEventListener('keyup', e => (e.keyCode === 27 ? this.close() : false));
   },
 };
 </script>
@@ -53,18 +56,26 @@ export default {
   display flex
   justify-content center
   align-items center
-  z-index 20
+  z-index 30
+
 .modal
   max-width 600px
   width 90%
   background #fff
+  border-radius var(--radius)
+  overflow hidden
   shadow()
 
 header,
 .content
-  padding: 25px
+  padding: var(--padding)
 
 header
   background var(--grey)
+
+.disclaimers
+  font-size 1.2rem
+  padding-left 1.2rem
+  margin-bottom 3rem
 
 </style>

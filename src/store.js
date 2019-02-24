@@ -72,17 +72,19 @@ export default new Vuex.Store({
   getters: {
     timeFrame: state => (state.months === 1 ? 'Monthly' : 'Yearly'),
     bestValue: (state) => {
-      const arr = Object.keys(state.providerCalculated).sort((a, b) => state.providerCalculated[a].total - state.providerCalculated[b].total);
+      const arr = Object
+        .keys(state.providerCalculated)
+        .sort((a, b) => state.providerCalculated[a].total - state.providerCalculated[b].total);
       return arr[0];
     },
     avgRevenue: state => state.userInfo.transactionCount * state.userInfo.avgTransactionPrice || '',
   },
   mutations: {
     setMonths: (state, payload) => {
-      state.months = payload;
+      Vue.set(state, 'months', payload);
     },
     setRegion: (state, payload) => {
-      state.region = payload;
+      Vue.set(state, 'region', payload);
     },
     setUserInfo: (state, { field, value }) => {
       Object.assign(state.userInfo, {
@@ -95,19 +97,24 @@ export default new Vuex.Store({
       });
     },
     setMaxStaffAccounts: (state, value) => {
-      state.reqs.maxStaffAccounts = value;
+      Vue.set(state.reqs, 'maxStaffAccounts', value);
+      // state.reqs.maxStaffAccounts = value;
     },
     setGiftCard: (state, value) => {
-      state.reqs.giftCards = value;
+      Vue.set(state.reqs, 'giftCards', value);
+      // state.reqs.giftCards = value;
     },
     setProReports: (state, value) => {
-      state.reqs.proReports = value;
+      Vue.set(state.reqs, 'proReports', value);
+      // state.reqs.proReports = value;
     },
     setAdvReports: (state, value) => {
-      state.reqs.advReports = value;
+      Vue.set(state.reqs, 'advReports', value);
+      // state.reqs.advReports = value;
     },
     setShippingRates: (state, value) => {
-      state.reqs.shippingRates = value;
+      Vue.set(state.reqs, 'shippingRates', value);
+      // state.reqs.shippingRates = value;
     },
     setExchangeRates: (state, { CAD_USD, USD_CAD }) => {
       Object.assign(state.exchangeRates, {
@@ -117,33 +124,15 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    setMonths: (context, val) => {
-      context.commit('setMonths', val);
-    },
-    setRegion: (context, val) => {
-      context.commit('setRegion', val);
-    },
-    setUserInfo: (context, val) => {
-      context.commit('setUserInfo', val);
-    },
-    setTotals: (context, val) => {
-      context.commit('setTotals', val);
-    },
-    setMaxStaffAccounts: (context, val) => {
-      context.commit('setMaxStaffAccounts', val);
-    },
-    setGiftCard: (context, val) => {
-      context.commit('setGiftCard', val);
-    },
-    setProReports: (context, val) => {
-      context.commit('setProReports', val);
-    },
-    setAdvReports: (context, val) => {
-      context.commit('setAdvReports', val);
-    },
-    setShippingRates: (context, val) => {
-      context.commit('setShippingRates', val);
-    },
+    setMonths: (context, val) => context.commit('setMonths', val),
+    setRegion: (context, val) => context.commit('setRegion', val),
+    setUserInfo: (context, val) => context.commit('setUserInfo', val),
+    setTotals: (context, val) => context.commit('setTotals', val),
+    setMaxStaffAccounts: (context, val) => context.commit('setMaxStaffAccounts', val),
+    setGiftCard: (context, val) => context.commit('setGiftCard', val),
+    setProReports: (context, val) => context.commit('setProReports', val),
+    setAdvReports: (context, val) => context.commit('setAdvReports', val),
+    setShippingRates: (context, val) => context.commit('setShippingRates', val),
     getExchangeRates: (context) => {
       const endpoint = 'https://free.currencyconverterapi.com/api/v6/convert?q=CAD_USD,USD_CAD&compact=ultra&apiKey=f3b0ddafa92827d8978f';
 

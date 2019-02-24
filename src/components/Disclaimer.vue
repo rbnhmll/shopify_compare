@@ -2,9 +2,9 @@
   <div class="disclaimer">
     <v-button
       @click.native="showModal = !showModal"
-      type="round"
+      shape="round"
     >
-      !!
+      <i class="fas fa-info"></i>
     </v-button>
     <modal v-if="showModal" @close="showModal = false"/>
   </div>
@@ -32,7 +32,7 @@ export default {
 
 button
   --position: 10px
-
+  z-index 20
   position fixed
   bottom var(--position)
   right var(--position)

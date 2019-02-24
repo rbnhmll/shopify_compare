@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <label for="region">Region</label>
+  <label for="region">
+    Region
     <select name="Region" id="region" v-model.number="region">
       <option v-for="option in options"
         :value="option"
         :key="option"
       >{{ option }}</option>
     </select>
-  </div>
+
+  </label>
 </template>
 
 <script>
@@ -32,6 +33,10 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+label
+  display flex
+  flex-direction column
+
 .select
   display inline-block
 </style>

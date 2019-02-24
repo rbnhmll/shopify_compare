@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <label for="timeframe">Timeframe</label>
-    <select name="Timeframe" id="timeframe" v-model.number="months">
-      <option v-for="option in options"
-        :value="option.value"
-        :key="option.text"
-      >{{ option.text }}</option>
-    </select>
-  </div>
+    <label for="timeframe">
+      Timeframe
+      <select name="Timeframe" id="timeframe" v-model.number="months">
+        <option v-for="option in options"
+          :value="option.value"
+          :key="option.text"
+        >{{ option.text }}</option>
+      </select>
+    </label>
 </template>
 
 <script>
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+label
+  display flex
+  flex-direction column
+
 .select
   display inline-block
 </style>

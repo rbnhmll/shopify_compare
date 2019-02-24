@@ -1,12 +1,14 @@
 <template>
   <section class="summary">
-    <h2 class="headline white--text light-green">Summary</h2>
-    <h3>Avg. {{ timeFrame }} Sales: ${{ avgRevenue }} {{ region }}</h3>
-    <div v-if="region === 'CAD'">
-      <p>~ {{ avgRevenue * exchangeRates.CAD_USD | money }} USD</p>
-      <small>*Estimated CAD => USD exchange = {{ exchangeRates.CAD_USD }}</small>
+    <div class="wrapper">
+      <h2 class="">Summary</h2>
+      <h3>Avg. {{ timeFrame }} Sales: ${{ avgRevenue }} {{ region }}</h3>
+      <div v-if="region === 'CAD'">
+        <p>~ {{ avgRevenue * exchangeRates.CAD_USD | money }} USD</p>
+        <small>*Estimated CAD => USD exchange = {{ exchangeRates.CAD_USD }}</small>
+      </div>
+      <h3>Best value for you right now: {{ bestValue }}</h3>
     </div>
-    <h3>Best value for you right now: {{ bestValue }}</h3>
   </section>
 </template>
 
@@ -34,6 +36,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+.summary
+  background var(--white)
 h2
   text-align center
 </style>

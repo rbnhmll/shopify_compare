@@ -1,20 +1,32 @@
 <template>
-  <article :class="{ bestValue: isBestValue }">
+  <article :id="rates.name | camel" :class="{ bestValue: isBestValue }">
     <best-banner
       v-if="isBestValue"
       :colour="rates.brandColour"
     />
-    <div>
+    <div class="content">
       <h2>{{ rates.name }}</h2>
-    </div>
-    <div>
-      <h5>Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}</h5>
-      <h3>Cost per sale: {{ averageCostPerSale | money }}</h3>
-      <h3>Fee % Per Sale: {{ feePercentagePerSale }}%</h3>
-      <h3>Total Monthly Fees: {{ totalFeesPerMonth | money }}</h3>
+      <ul class="rates">
+        <li>
+          <i class="fas fa-calendar-alt"></i>
+          Monthly Fee: {{ rates.monthlyFee | money }} {{ rates.currency }}
+        </li>
+        <li>
+          <i class="fas fa-credit-card"></i>
+          Cost per sale: {{ averageCostPerSale | money }}
+        </li>
+        <li>
+          <i class="fas fa-percentage"></i>
+          Fee % Per Sale: {{ feePercentagePerSale }}%
+        </li>
+        <li>
+          <i class="fas fa-equals"></i>
+          Total Monthly Fees: {{ totalFeesPerMonth | money }}
+        </li>
+      </ul>
       <div v-if="rates.additionalFeatures">
         <h4>Plus:</h4>
-        <ul>
+        <ul class="plus">
           <li
             v-for="feature in rates.additionalFeatures"
             :key="feature.name"
@@ -30,23 +42,20 @@
     </div>
     <div class="cta" v-if="rates.affiliate && isBestValue">
       <h3 class="cta__message">Get started with {{ rates.name }}</h3>
-      <affiliate-button
-        :link="rates.affiliate"
-        :colour="rates.brandColour"
-      />
+      <v-button :href="rates.affiliate" target="_blank">Sign up for free now!</v-button>
     </div>
   </article>
 </template>
 
 <script>
-import AffiliateButton from './AffiliateButton.vue';
+import VButton from './VButton.vue';
 import BestBanner from './BestBanner.vue';
 
 export default {
   name: 'Provider',
   props: ['rates'],
   components: {
-    AffiliateButton,
+    VButton,
     BestBanner,
   },
   computed: {
@@ -106,28 +115,54 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import '../assets/styles/mixins'
+
 article
-  height 100%
+  overflow hidden
   position relative
-  margin 0 1%
+  margin 10px 10px
+  flex 1 0 280px
+  border-radius var(--radius)
+  background var(--white)
+  border 2px solid transparent
+  transition()
+  shadow()
 
   &.bestValue
-    transition all 0.5s
-    transform scale(1.08)
-    box-shadow 0 0 20px rgba(0, 0, 0, 0.5)
-    flex 2 0 200px
+    border 2px solid var(--turquoise)
+    transform scale(1.05)
+    flex-grow 2
     z-index 10
+    shadow(0.3)
 
-li
-  padding 5px
-  border-radius 3px
-  transition background 0.3s
+.content,
+.cta
+  padding var(--padding)
 
-  &.req
-    background #8BC34A
+.cta
+  background var(--lightgrey)
+
+.cta__message
+  margin-top 0
+
+.rates
+  list-style-type none
+  padding 0
+  margin 0
+  li
+    padding: 5px
+  i
+    width 20px
+
+.plus
+  // border-radius 3px
+  // padding 5px
+  // transition background 0.3s
+
+  // &.req
+  //   background #8BC34A
 
 .cta
   text-align center
   flex-direction column
-  padding 20px 0
 </style>

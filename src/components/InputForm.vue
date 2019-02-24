@@ -1,42 +1,48 @@
 <template>
-  <form @submit.prevent class="input-form">
+  <section class="input-form">
+    <div class="wrapper">
+      <form @submit.prevent class="input-form">
 
-    <fieldset>
-      <region-switcher />
-      <timeframe-switcher />
-    </fieldset>
+        <fieldset class="switches">
+          <region-switcher />
+          <timeframe-switcher />
+        </fieldset>
 
-    <fieldset>
+        <div class="sliders">
 
-      <v-range
-        :value="userInfo.transactionCount"
-        name="# of Transactions"
-        id="numberOfTransaction"
-        :min="1"
-        :max="1000"
-        @change="updateField('transactionCount', $event)"
-      />
+          <v-range
+            :value="userInfo.transactionCount"
+            name="# of Transactions"
+            id="numberOfTransaction"
+            :min="1"
+            :max="1000"
+            @change="updateField('transactionCount', $event)"
+          />
 
-      <v-range
-        :value="userInfo.avgTransactionPrice"
-        name="Avg. Transaction Price"
-        id="transactionPrice"
-        :min="1"
-        :max="1000"
-        @change="updateField('avgTransactionPrice', $event)"
-      />
+          <v-range
+            :value="userInfo.avgTransactionPrice"
+            name="Avg. Transaction Price"
+            id="transactionPrice"
+            :min="1"
+            :max="1000"
+            price
+            @change="updateField('avgTransactionPrice', $event)"
+          />
 
-      <v-range
-        :value="userInfo.avgShippingCost"
-        name="Avg. Shipping Cost"
-        id="shippingCost"
-        :min="1"
-        :max="500"
-        @change="updateField('avgShippingCost', $event)"
-      />
-    </fieldset>
+          <v-range
+            :value="userInfo.avgShippingCost"
+            name="Avg. Shipping Cost"
+            id="shippingCost"
+            :min="0"
+            :max="500"
+            price
+            @change="updateField('avgShippingCost', $event)"
+          />
+        </div>
+      </form>
+    </div>
+  </section>
     <!-- <advanced-options /> -->
-  </form>
 </template>
 
 <script>
@@ -67,7 +73,24 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.input-form
+@import '../assets/styles/mixins'
+
+form
   display grid
-  grid-template-columns 250px 1fr
+  grid-template-columns 1fr
+  grid-gap var(--padding)
+  padding: var(--padding)
+  background #fff
+  border-radius var(--radius)
+  shadow()
+
+.switches
+  display flex
+  & > *
+    flex 1
+
+.sliders
+  display grid
+  grid-template-columns 1fr
+  grid-gap 10px
 </style>

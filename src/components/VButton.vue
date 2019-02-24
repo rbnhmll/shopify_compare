@@ -1,16 +1,29 @@
 <template>
-  <button :class="type">
+  <a :href="href" class="button" :class="shape" v-if="elementType === 'anchor'">
+    <slot />
+  </a>
+
+  <button v-else class="button" :class="shape">
     <slot />
   </button>
 </template>
 
 <script>
 export default {
-  bame: 'VButton',
+  name: 'VButton',
   props: {
-    type: {
+    shape: {
       type: String,
       default: 'square',
+    },
+    href: {
+      type: String,
+      required: false,
+    },
+  },
+  computed: {
+    elementType() {
+      return this.href ? 'anchor' : 'button';
     },
   },
 };
@@ -19,13 +32,16 @@ export default {
 <style lang="stylus" scoped>
 @import '../assets/styles/mixins'
 
-button
+button,
+a
+  color inherit
+  text-decoration none
   border none
-  display flex
+  display inline-flex
   justify-content center
   align-items center
   line-height 1
-  background var(--grey)
+  background var(--turquoise)
   transition(box-shadow)
   &:hover,
   &:active,
@@ -39,7 +55,7 @@ button
   border-radius 50%
 
 .square
-  padding 10px 20px
-  border-radius 5px
+  padding 15px 20px
+  border-radius var(--radius)
 
 </style>

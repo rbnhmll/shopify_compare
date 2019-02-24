@@ -1,7 +1,7 @@
 <template>
-  <section class="rangeSlider">
+  <fieldset class="rangeSlider">
     <label :for="id">{{ name }}</label>
-    <div class="rangeSlider__wrapper">
+    <div class="input-wrapper">
       <input
         v-bind="$attrs"
         :id="id"
@@ -16,12 +16,16 @@
         :style="valPosition"
         class="valueMarker">{{ selection }}</span>
     </div>
-    <input
-      type="number"
-      v-model.number="selection"
-      v-on="listeners"
-    >
-  </section>
+    <div class="input-wrapper">
+      <span class="price" v-if="price">$</span>
+      <input
+        :min="min"
+        type="number"
+        v-model.number="selection"
+        v-on="listeners"
+      >
+    </div>
+  </fieldset>
 </template>
 
 <script>
@@ -56,6 +60,10 @@ export default {
     value: {
       type: Number,
       default: 0,
+    },
+    price: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -93,22 +101,24 @@ export default {
 <style scoped lang="stylus">
 @import '../assets/styles/mixins'
 
-.rangeSlider__wrapper
+.input-wrapper
   position relative
 
 .rangeSlider
   display grid
-  grid-template-columns 150px 1fr 50px
+  grid-template-columns 1fr 75px
   align-items center
-  grid-gap 20px
+  grid-gap 0 20px
+  label
+    text-align center
+    grid-column 1 / -1
 
 input[type='range']
   -webkit-appearance none
   appearance none
   width 100%
   display block
-  // background-color $darkblue
-  background-color darkblue
+  background-color var(--turquoise)
   height 4px
   border-radius 2px
   margin 0 auto
@@ -118,8 +128,7 @@ input[type='range']
   &::-moz-range-thumb
     -webkit-appearance none
     appearance none
-    // background-color $turquoise
-    background-color blue
+    background-color var(--turquoise)
     width 20px
     height 20px
     border-radius 50%
@@ -137,20 +146,45 @@ input[type='range']
       transform translateX(-50%) scale(1)
 
 input[type='number']
-  width auto
+  -webkit-appearance none
+  -moz-appearance textfield
+  appearance none
+  margin: 0
+  width 100%
+  padding-left 20px
+  border none
+
+.price
+  color var(--grey)
+  position absolute
+  transform translateY(-50%)
+  top 50%
+  left 5px
 
 .valueMarker
+  color var(---white)
   padding 5px
   position absolute
   bottom calc(100% + 25px)
-  background #fff
-  border 1px solid #ddd
+  background var(--turquoise)
   border-radius 3px
   transform translateX(-50%) scale(0.7)
   opacity 0
   white-space nowrap
+  min-width 35px
+  text-align center
   box-shadow()
   transition(transform, opacity)
+  &:after
+    content ""
+    position absolute
+    top 100%
+    left 50%
+    transform translateX(-50%)
+    border 10px solid var(--turquoise)
+    border-bottom-color transparent
+    border-left-color transparent
+    border-right-color transparent
 
 .rangeLimits
   display flex

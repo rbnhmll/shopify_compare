@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css')
+
+html 
+  font-size 62.5%
+
+body
+  background var(--lightgrey)
+  font-size 1.6rem
+  color var(--black)
+  font-family var(--font-main)
+
+.wrapper
+  max-width 1400px
+  width 90%
+  margin 0 auto
+
+for n in (1..6)
+  h{n},.h{n}
+    font-weight 400
+
+a
+  color inherit
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+
+img
+  display block
+  max-width 100%
+
+main
+  display grid 
+  grid-template-columns 1fr
+  grid-gap 20px
+
+fieldset
+  margin 0
+  padding 0
+  border none

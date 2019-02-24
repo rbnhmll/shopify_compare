@@ -1,8 +1,9 @@
 <template>
   <div>
     <v-header />
-    <main class="wrapper">
+    <main>
       <input-form />
+      <tldr />
       <provider-loop />
       <v-summary />
     </main>
@@ -14,6 +15,7 @@
 <script>
 import VHeader from './components/VHeader.vue';
 import InputForm from './components/InputForm.vue';
+import Tldr from './components/Tldr.vue';
 import VSummary from './components/VSummary.vue';
 import ProviderLoop from './components/ProviderLoop.vue';
 import VFooter from './components/VFooter.vue';
@@ -24,6 +26,7 @@ export default {
   components: {
     VHeader,
     InputForm,
+    Tldr,
     VSummary,
     ProviderLoop,
     VFooter,
@@ -47,15 +50,5 @@ export default {
 @import './assets/styles/normalize'
 @import './assets/styles/vars'
 @import './assets/styles/mixins'
-
-section
-  border 2px solid grey
-
-.wrapper
-  display grid
-  grid-template-columns 1fr
-  grid-gap 50px
-  max-width 800px
-  width 100%
-  margin 0 auto
+@import './assets/styles/global'
 </style>
