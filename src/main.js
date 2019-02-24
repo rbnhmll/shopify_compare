@@ -1,13 +1,10 @@
 import vueSmoothScroll from 'vue2-smooth-scroll';
 import '@babel/polyfill';
 import Vue from 'vue';
-import VueHead from 'vue-head';
 import App from './App.vue';
 import store from './store';
 
 Vue.use(vueSmoothScroll);
-
-Vue.use(VueHead);
 
 Vue.config.productionTip = false;
 
