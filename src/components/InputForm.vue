@@ -3,10 +3,10 @@
     <div class="wrapper">
       <form @submit.prevent class="input-form">
 
-        <fieldset class="switches">
+        <div class="switches">
           <region-switcher />
           <timeframe-switcher />
-        </fieldset>
+        </div>
 
         <div class="sliders">
 

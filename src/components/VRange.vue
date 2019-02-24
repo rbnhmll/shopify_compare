@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="rangeSlider">
+  <div class="rangeSlider">
     <label :for="id">{{ name }}</label>
     <div class="input-wrapper">
       <input
@@ -25,7 +25,7 @@
         v-on="listeners"
       >
     </div>
-  </fieldset>
+  </div>
 </template>
 
 <script>
