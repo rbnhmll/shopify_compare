@@ -164,7 +164,6 @@ article
   flex 1 0 280px
   border-radius var(--radius)
   background var(--white)
-  border 2px solid transparent
   transition()
   shadow()
 

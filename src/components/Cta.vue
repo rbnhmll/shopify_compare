@@ -25,5 +25,6 @@ export default {
 .cta
   background var(--lightgrey)
   text-align center
-  flex-direction column
+  // flex-direction column
+  display block
 </style>

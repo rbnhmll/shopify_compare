@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="content wrapper">
-      <h1>Shopify<br>Compare</h1>
+      <h1 class="hl">Shopify<br>Compare</h1>
     </div>
   </header>
 </template>
@@ -19,7 +19,7 @@ export default {
 
 <style scoped lang="stylus">
 header
-  padding 10px 0 110px
+  padding 10px 0 80px
   background linear-gradient(to bottom right, var(--purple), var(--turquoise))
   margin-bottom -100px
 
@@ -28,9 +28,9 @@ header
   justify-content flex-end
 
 h1
+  font-size 5rem
   line-height .75
   display inline-block
   text-align right
-  color: #fff
-  font-size 4rem
+  color: var(--white)
 </style>

@@ -2,7 +2,7 @@
   <section class="tldr">
     <div class="wrapper wrapper--mini content">
       <h2 class="hl">tl;dr</h2>
-      <p>Best value for you right now:</p>
+      <h3>Best value for you right now:</h3>
       <div class="cta">
         <v-button
           :href="`${bestValue.name}` | camel | id"
@@ -36,6 +36,10 @@ export default {
 <style lang="stylus" scoped>
 section
   background var(--white)
+
+h3
+  text-align center
+  margin-top 0
 
 .cta
   text-align center
