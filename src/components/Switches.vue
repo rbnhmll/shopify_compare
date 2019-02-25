@@ -28,13 +28,11 @@ export default {
 
 .select-wrapper
   position relative
-  &:after
+  i
     position absolute
     right 5px
     top 50%
     transform translateY(-52%)
-    content: "\f078";
-    font-family: FontAwesome;
     color var(--purple)
     pointer-events: none
 

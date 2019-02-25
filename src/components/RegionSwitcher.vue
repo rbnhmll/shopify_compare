@@ -8,6 +8,7 @@
           :key="option"
         >{{ option }}</option>
       </select>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </label>
 </template>
