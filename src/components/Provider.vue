@@ -23,10 +23,14 @@
         </li>
         <li>
           <i class="fas fa-credit-card"></i>
-          Processing Fees: {{ (paymentProcessingFeePercentage * 100).toFixed(1) }}% + {{ paymentProcessingFeeFixed | money }}
+          Processing Fees: {{ (paymentProcessingFeePercentage * 100).toFixed(1) }}%
+          <icon-tooltip v-if="rates.shippingProcessingPercentage > 0">
+            Sale price + Shipping
+          </icon-tooltip>
+          + {{ paymentProcessingFeeFixed | money }}
           <icon-tooltip v-if="rates.monthlyFee > 0">
-              Billed in {{ region }}
-            </icon-tooltip>
+            Billed in {{ region }}
+          </icon-tooltip>
           <ul>
             <li>
               Total Fee % Per Sale: {{ feePercentagePerSale }}%
