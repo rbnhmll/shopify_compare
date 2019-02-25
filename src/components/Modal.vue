@@ -6,11 +6,11 @@
       </header>
       <div class="content">
         <ul class="disclaimers">
-          <li><p>This tool is made for reference only, and does not guarantee the accurancy of any of the information or pricing provided.</p></li>
-          <li><p>Other currency conversions are estimates based off of an external resource. Do your homework, and double check conversion rates.</p></li>
-          <li><p>Shopify sign up links contain affilate parameters to help support the development of this site.</p></li>
+          <li><p>This tool is indented for reference only, and does not guarantee the accuracy of any of the pricing information provided.</p></li>
+          <li><p>Currency conversions are estimates based on an external resource. Do your homework, and double check conversion rates.</p></li>
+          <li><p>Shopify sign-up links contain affiliate parameters to help support and maintain this site.</p></li>
           <li><p>This site is not associated in any way with Shopify, and as such pricing could change without warning.</p></li>
-          <li><p>This tool is in beta. If you notice any issues or comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shopify Compare">email me</a> 😺.</p></li>
+          <li><p>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shopify Compare">email me</a> 😺.</p></li>
         </ul>
 
         <v-button
