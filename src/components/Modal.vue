@@ -1,6 +1,6 @@
 <template>
   <div class="skrim">
-    <div class="modal">
+    <div class="modal" aria-modal="true">
       <header>
         ⚠️ Disclaimer
       </header>
@@ -17,6 +17,7 @@
           @click.native="close"
           shape="square"
           type="button"
+          ref="agree"
         >
           I accept
         </v-button>
@@ -39,6 +40,7 @@ export default {
     },
   },
   mounted() {
+    this.$refs.agree.focus();
     document.addEventListener('keyup', e => (e.keyCode === 27 ? this.close() : false));
   },
 };
