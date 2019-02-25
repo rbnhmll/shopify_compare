@@ -76,7 +76,7 @@ form
   border-radius var(--radius)
   shadow()
   @media screen and (min-width 768px)
-    grid-template-columns auto 1fr
+    grid-template-columns 200px 1fr
 
 
 .sliders

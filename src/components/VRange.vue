@@ -115,19 +115,28 @@ export default {
 
 input[type='range']
   -webkit-appearance none
-  appearance none
+  background var(--turquoise)
   width 100%
   display block
-  background-color var(--turquoise)
   height 4px
   border-radius 2px
   margin 0 auto
   outline 0
 
-  &::-webkit-slider-thumb,
-  &::-moz-range-thumb
+  &::-webkit-slider-thumb
     -webkit-appearance none
-    appearance none
+    background-color var(--purple)
+    width 20px
+    height 20px
+    cursor pointer
+    border-radius 50%
+    border none
+    transition(transform)
+    &:active,
+    &:focus
+      transform scale(1.2)
+
+  &::-moz-range-thumb
     background-color var(--purple)
     width 20px
     height 20px
@@ -135,13 +144,14 @@ input[type='range']
     cursor pointer
     border none
     transition(transform)
-
-    &:active
+    &:active,
+    &:focus
       transform scale(1.2)
 
   &:hover,
   &:active,
   &:focus
+    outline none
     + .valueMarker
       opacity 1
       transform translateX(-50%) scale(1)
@@ -149,21 +159,27 @@ input[type='range']
 input[type='number']
   -webkit-appearance none
   -moz-appearance textfield
+  background var(--lightgrey)
   appearance none
   margin: 0
   width 100%
+  padding 2px 5px
   padding-left 20px
   border none
-  border-bottom 3px solid transparent
+  border-bottom 3px solid var(--white)
+  transition()
   &:hover,
   &:active,
   &:focus
+    outline none
     border-bottom-color var(--yellow)
 
 .price
+  line-height 1
+  display block
   color var(--grey)
   position absolute
-  transform translateY(-50%)
+  transform translateY(-60%)
   top 50%
   left 5px
 

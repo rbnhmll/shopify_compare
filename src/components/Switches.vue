@@ -1,7 +1,7 @@
 <template>
   <div class="switches">
-    <region-switcher />
     <timeframe-switcher />
+    <region-switcher />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
 .switches
   display grid
   grid-template-columns 1fr 1fr
-  grid-gap 50px
+  grid-gap 0 50px
   @media screen and (min-width 768px)
     grid-template-columns 1fr
 
@@ -32,7 +32,7 @@ export default {
     position absolute
     right 5px
     top 50%
-    transform translateY(-50%)
+    transform translateY(-52%)
     content: "\f078";
     font-family: FontAwesome;
     color var(--purple)
@@ -42,13 +42,18 @@ select
   -webkit-appearance none
   -moz-appearance none
   color var(--purple)
+  background var(--lightgrey)
   appearance none
   width 100%
+  padding 2px 5px
   padding-right 25px
+  border-radius 0
   border none
-  border-bottom 3px solid transparent
+  border-bottom 3px solid var(--white)
+  transition()
   &:hover,
   &:active,
   &:focus
+    outline none
     border-bottom-color var(--yellow)
 </style>
