@@ -40,7 +40,7 @@ export default {
     },
   },
   mounted() {
-    this.$refs.agree.focus();
+    // this.$refs.agree.focus();
     document.addEventListener('keyup', e => (e.keyCode === 27 ? this.close() : false));
   },
 };
