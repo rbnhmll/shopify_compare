@@ -49,7 +49,7 @@
         </li>
       </ul>
       <div v-if="rates.additionalFeatures">
-        <h4>Plus:</h4>
+        <h4 class="plus__heading hl">Plus:</h4>
         <ul class="plus">
           <li
             v-for="feature in rates.additionalFeatures"
@@ -194,6 +194,9 @@ article
   ul
     font-size 1.4rem
     line-height 1
+
+.plus__heading
+  margin-bottom 0
 
 .plus
   font-size 1.4rem
