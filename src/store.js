@@ -68,8 +68,8 @@ export default new Vuex.Store({
       shippingRates: false,
     },
     exchangeRates: {
-      CAD_USD: null,
-      USD_CAD: null,
+      CAD_USD: 0.75813,
+      USD_CAD: 1.31892,
     },
     providerData,
   },
@@ -124,7 +124,8 @@ export default new Vuex.Store({
         .then(response => response.json())
         .then((response) => {
           context.commit('setExchangeRates', response);
-        });
+        })
+        .catch(err => console.error('Failed to fetch exchange rates. Using fallback values: ', err));
     },
   },
 });
