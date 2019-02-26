@@ -10,7 +10,7 @@
           v-smooth-scroll="{ duration: 500, offset: -35 }"
         >
           {{ bestValue.name }}
-          <i class="fas fa-chevron-down"></i>
+          <i class="far fa-chevron-down"></i>
         </v-button>
       </div>
     </div>

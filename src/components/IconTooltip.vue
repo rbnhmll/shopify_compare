@@ -13,7 +13,7 @@ export default {
   props: {
     icon: {
       type: String,
-      default: 'fas fa-info-circle',
+      default: 'far fa-info-circle',
     },
   },
 };

@@ -8,7 +8,7 @@
       <h2 class="hl provider__name">{{ rates.name }}</h2>
       <ul class="rates">
         <li>
-          <i class="fas fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt"></i>
           Monthly Fee: {{ rates.monthlyFee | money }}
           <span class="currency">
             <small>{{ rates.currency }}</small>
@@ -18,11 +18,11 @@
           </span>
         </li>
         <li>
-          <i class="fas fa-list-alt"></i>
+          <i class="far fa-list-alt"></i>
           Item listing fee: {{ rates.listingFeeFixed | money }}
         </li>
         <li>
-          <i class="fas fa-credit-card"></i>
+          <i class="far fa-credit-card"></i>
           Processing Fees: {{ (paymentProcessingFeePercentage * 100).toFixed(1) }}%
           <icon-tooltip v-if="rates.shippingProcessingPercentage > 0">
             Sale price + Shipping
@@ -41,7 +41,7 @@
           </ul>
         </li>
         <li>
-          <i class="fas fa-equals"></i>
+          <i class="far fa-equals"></i>
           Total Fees: {{ totalFeesPerMonth | money }} <small>{{ region }}</small>
           <icon-tooltip>
             Based on monthly sales
