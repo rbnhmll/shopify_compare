@@ -17,7 +17,7 @@
         class="valueMarker">{{ selection }}</span>
     </div>
     <div class="input-wrapper">
-      <span class="price" v-if="price">$</span>
+      <span class="price" v-if="price"><i class="far fa-dollar-sign"></i></span>
       <input
         :min="min"
         type="number"
@@ -112,6 +112,7 @@ export default {
   label
     text-align center
     grid-column 1 / -1
+    margin-bottom 5px
 
 input[type='range']
   -webkit-appearance none
