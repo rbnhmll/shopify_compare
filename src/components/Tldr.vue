@@ -2,7 +2,7 @@
   <section class="tldr">
     <div class="wrapper wrapper--mini content">
       <h2 class="hl">tl;dr</h2>
-      <h3>Best value for you right now:</h3>
+      <p>With {{ avgRevenue | money }} in {{ timeFrame }} sales, the best value for you right now is:</p>
       <div class="cta">
         <v-button
           :href="`${bestValue.name}` | camel | id"
@@ -28,6 +28,12 @@ export default {
   computed: {
     bestValue() {
       return this.$store.getters.bestValue;
+    },
+    avgRevenue() {
+      return this.$store.getters.avgRevenue;
+    },
+    timeFrame() {
+      return this.$store.getters.timeFrame;
     },
   },
 };
