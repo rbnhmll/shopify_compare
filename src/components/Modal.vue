@@ -6,15 +6,28 @@
       </header>
       <div class="content">
         <ul class="disclaimers">
-          <li>This tool is indented for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
-          <li>Currency conversions are based on an external resource. Do your homework, and double check conversion rates. Today's rates:
+          <li>This tool is not associated in any way with Shopify, and as such, pricing could change without warning. This tool is indented for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
+          <li>Currency conversions are based on an external resource. Double check conversion rates. Today's rates are:
             <ul>
               <li>CAD => USD: {{ exchangeRates.CAD_USD }}</li>
               <li>USD => CAD: {{ exchangeRates.USD_CAD }}</li>
             </ul>
           </li>
-          <li>Site contains affiliate links to help support and maintain this tool.</li>
-          <li>This tool is not associated in any way with Shopify, and as such pricing could change without warning.</li>
+          <li>This site contains affiliate links to help support and maintain this tool.</li>
+          <li>
+            Need a pre-made theme? Check out some amazing themes at
+            <a href="https://outofthesandbox.com?rfsn=587318.8a8207" target="_blank">
+              Out of the Sandbox
+              <i class="far fa-external-link-alt"></i>
+            </a>
+          </li>
+          <li>
+            Need a Shopify developer?
+            <a href="https://www.robinhamill.com" target="_blank">
+              Let's work together!
+              <i class="far fa-external-link-alt"></i>
+            </a>
+          </li>
           <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shopify Compare">email me</a> 😺.</li>
         </ul>
 
@@ -87,8 +100,10 @@ header
   background var(--lightgrey)
 
 .disclaimers
-  font-size 1.2rem
+  font-size 1.4rem
   padding-left 1.2rem
   margin-bottom 3rem
+  i
+    font-size .8em
 
 </style>
