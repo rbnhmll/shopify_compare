@@ -17,6 +17,8 @@ Vue.filter('camel', value => value
 
 Vue.filter('id', value => `#${value}`);
 
+Vue.filter('percent', value => `${(value * 100).toFixed(1)}%`);
+
 new Vue({
   store,
   render: h => h(App),
