@@ -6,7 +6,7 @@
       </header>
       <div class="content">
         <ul class="disclaimers">
-          <li>This tool is not associated in any way with Shopify, and as such, pricing could change without warning. This tool is indented for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
+          <li>This tool is not associated in any way with Shopify, and as such, pricing could change without warning. This tool is intended for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
           <li>Currency conversions are based on an external resource. Double check conversion rates. Today's rates are:
             <ul>
               <li>CAD => USD: {{ exchangeRates.CAD_USD }}</li>
