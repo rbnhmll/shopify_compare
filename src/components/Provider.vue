@@ -1,9 +1,6 @@
 <template>
   <article :id="rates.name | camel" :class="{ bestValue: isBestValue }">
-    <best-banner
-      v-if="isBestValue"
-      :colour="rates.brandColour"
-    />
+    <best-banner v-if="isBestValue" />
     <div class="content">
       <h2 class="hl provider__name">{{ rates.name }}</h2>
       <ul class="rates">
@@ -19,24 +16,36 @@
         </li>
         <li>
           <i class="far fa-list-alt"></i>
-          Item listing fee: {{ rates.listingFeeFixed | money }}
+          Item Listing Fee: {{ rates.listingFeeFixed | money }}
+        </li>
+        <li v-if="rates.salesFeePercentage > 0 || rates.shippingFeePercentage > 0">
+          <i class="far fa-money-bill"></i>
+          Transaction Fee:
+          <template >
+            {{ rates.salesFeePercentage | percent }}
+            <icon-tooltip>
+              Sale + Shipping
+            </icon-tooltip>
+          </template>
+          <ul v-if="rates.salesFeePercentage !== rates.shippingFeePercentage">
+            <li v-if="rates.salesFeePercentage > 0">{{ rates.salesFeePercentage | percent }}</li>
+            <li v-if="rates.shippingFeePercentage > 0">{{ rates.shippingFeePercentage | percent }}</li>
+          </ul>
         </li>
         <li>
           <i class="far fa-credit-card"></i>
-          Processing Fees: {{ (paymentProcessingFeePercentage * 100).toFixed(1) }}%
-          <icon-tooltip v-if="rates.shippingProcessingPercentage > 0">
-            Sale price + Shipping
-          </icon-tooltip>
-          + {{ paymentProcessingFeeFixed | money }}
+          Processing Fees:
+            <span v-if="paymentProcessingFeePercentage > 0">{{ paymentProcessingFeePercentage | percent }} + </span>
+            <span v-if="paymentProcessingFeeFixed > 0">{{ paymentProcessingFeeFixed | money }}</span>
           <icon-tooltip v-if="rates.monthlyFee > 0">
             Billed in {{ region }}
           </icon-tooltip>
           <ul>
-            <li>
-              Total Fee % Per Sale: {{ feePercentagePerSale }}%
+            <li v-if="paymentProcessingFeePercentage > 0">
+              Payment Processing Fee: {{ paymentProcessingFeePercentage | percent }}
             </li>
-            <li>
-              Total Cost Per Sale: {{ averageCostPerSale | money }}
+            <li v-if="paymentProcessingFeeFixed > 0">
+              Payment Processing Fixed Fee: {{ paymentProcessingFeeFixed | money }}
             </li>
           </ul>
         </li>
@@ -46,6 +55,14 @@
           <icon-tooltip>
             Based on monthly sales
           </icon-tooltip>
+          <ul>
+            <li>
+              Total Cost Per Sale: {{ averageCostPerSale | money }}
+            </li>
+            <li>
+              Total Fee % Per Sale: {{ feePercentagePerSale }}%
+            </li>
+          </ul>
         </li>
       </ul>
       <div v-if="rates.additionalFeatures">
@@ -55,7 +72,6 @@
             v-for="feature in rates.additionalFeatures"
             :key="feature.name"
             v-if="feature.value"
-            :class="{'req': reqs[feature.id] <= rates.additionalFeatures[feature.id]}"
           >
             <span
               v-if="typeof feature.value === 'number'"
@@ -101,23 +117,23 @@ export default {
     userInfo() {
       return this.$store.state.userInfo;
     },
-    reqs() {
-      return this.$store.state.reqs;
-    },
     salesFeeAmount() {
       return this.userInfo.avgTransactionPrice * this.rates.salesFeePercentage;
     },
+    shippingFeeAmount() {
+      return this.userInfo.avgShippingCost * this.rates.shippingFeePercentage;
+    },
     paymentProcessingFeeFixed() {
       return this.rates.paymentProcessingFeeFixed;
+    },
+    listingFeeFixed() {
+      return this.rates.listingFeeFixed;
     },
     paymentProcessingFeePercentage() {
       return this.rates.paymentProcessingFeePercentage;
     },
     paymentProcessingFeeAmount() {
-      return this.userInfo.avgTransactionPrice * this.paymentProcessingFeePercentage;
-    },
-    shippingProcessingFeeAmount() {
-      return this.userInfo.avgShippingCost * this.rates.shippingProcessingPercentage;
+      return (this.userInfo.avgTransactionPrice + this.shippingFeeAmount) * this.paymentProcessingFeePercentage;
     },
     proratedMonthlyFee() {
       const monthlyFee = this.region === 'CAD'
@@ -127,10 +143,10 @@ export default {
     },
     averageCostPerSale() {
       return this.salesFeeAmount
+      + this.shippingFeeAmount
       + this.paymentProcessingFeeAmount
-      + this.shippingProcessingFeeAmount
-      + this.rates.paymentProcessingFeeFixed
-      + this.rates.listingFeeFixed
+      + this.paymentProcessingFeeFixed
+      + this.listingFeeFixed
       + this.proratedMonthlyFee;
     },
     totalFeesPerMonth() {
