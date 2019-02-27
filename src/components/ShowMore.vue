@@ -48,7 +48,7 @@ export default {
 
 
 .more_button
-  margin-left 20px
+  // margin-left 20px
   display flex
   grid-template-columns auto auto
   i

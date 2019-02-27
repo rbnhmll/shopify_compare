@@ -200,35 +200,29 @@ article
     z-index 10
     shadow(0.3)
 
-
-ul ul
-  // padding-top 15px
-
 .rates
   list-style-type none
   padding 0
   margin 0
-  li
+  & > li
+    position relative
     padding: 3px
-    padding-left 0
-  i
-    display inline-flex
-    justify-content center
-    width 20px
-    color var(--purple)
+    padding-left 25px
+    i
+      position absolute
+      left 0
+      top 7px
+      display inline-flex
+      justify-content center
+      width 20px
+      color var(--purple)
   ul
     font-size 1.4rem
-    line-height 1
+    padding-left 18px
 
 .plus__heading
   margin-bottom 0
 
 .plus
   font-size 1.4rem
-  // border-radius 3px
-  // padding 5px
-  // transition background 0.3s
-
-  // &.req
-  //   background #8BC34A
 </style>
