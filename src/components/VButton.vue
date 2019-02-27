@@ -59,4 +59,13 @@ a
   padding 15px 20px
   border-radius var(--radius)
 
+.small
+  text-decoration-style dotted
+  background none
+  color var(--purple)
+  padding 2px 5px
+  height var(--size)
+  border-radius var(--radius)
+  font-size 1rem
+
 </style>

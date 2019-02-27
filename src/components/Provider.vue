@@ -40,14 +40,16 @@
           <icon-tooltip v-if="rates.monthlyFee > 0">
             Billed in {{ region }}
           </icon-tooltip>
-          <ul>
-            <li v-if="paymentProcessingFeePercentage > 0">
-              Payment Processing Fee: {{ paymentProcessingFeePercentage | percent }}
-            </li>
-            <li v-if="paymentProcessingFeeFixed > 0">
-              Payment Processing Fixed Fee: {{ paymentProcessingFeeFixed | money }}
-            </li>
-          </ul>
+          <show-more>
+            <ul>
+              <li v-if="paymentProcessingFeePercentage > 0">
+                Payment Processing Fee: {{ paymentProcessingFeePercentage | percent }}
+              </li>
+              <li v-if="paymentProcessingFeeFixed > 0">
+                Payment Processing Fixed Fee: {{ paymentProcessingFeeFixed | money }}
+              </li>
+            </ul>
+          </show-more>
         </li>
         <li>
           <i class="far fa-equals"></i>
@@ -55,14 +57,16 @@
           <icon-tooltip>
             Based on monthly sales
           </icon-tooltip>
-          <ul>
-            <li>
-              Total Cost Per Sale: {{ averageCostPerSale | money }}
-            </li>
-            <li>
-              Total Fee % Per Sale: {{ feePercentagePerSale }}%
-            </li>
-          </ul>
+          <show-more>
+            <ul>
+              <li>
+                Total Cost Per Sale: {{ averageCostPerSale | money }}
+              </li>
+              <li>
+                Total Fee % Per Sale: {{ feePercentagePerSale }}%
+              </li>
+            </ul>
+          </show-more>
         </li>
       </ul>
       <div v-if="rates.additionalFeatures">
@@ -88,6 +92,7 @@
 <script>
 import VButton from './VButton.vue';
 import IconTooltip from './IconTooltip.vue';
+import ShowMore from './ShowMore.vue';
 import BestBanner from './BestBanner.vue';
 import Cta from './Cta.vue';
 
@@ -101,6 +106,7 @@ export default {
   components: {
     VButton,
     IconTooltip,
+    ShowMore,
     BestBanner,
     Cta,
   },
@@ -194,6 +200,9 @@ article
     z-index 10
     shadow(0.3)
 
+
+ul ul
+  // padding-top 15px
 
 .rates
   list-style-type none
