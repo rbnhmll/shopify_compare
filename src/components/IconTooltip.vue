@@ -39,6 +39,7 @@ export default {
   display inline-block
   white-space nowrap
   opacity 0
+  pointer-events none
   transition(opacity)
   &:after
     position absolute
