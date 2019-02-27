@@ -21,7 +21,6 @@
 
 <script>
 import VButton from './VButton.vue';
-import Switches from './Switches.vue';
 import IconTooltip from './IconTooltip.vue';
 import Cta from './Cta.vue';
 
@@ -29,7 +28,6 @@ export default {
   name: 'Summary',
   components: {
     VButton,
-    Switches,
     IconTooltip,
     Cta,
   },
