@@ -1,6 +1,6 @@
 <template>
   <section class="input-form">
-    <div class="wrapper">
+    <div class="wrapper wrapper--medium">
       <form @submit.prevent class="input-form">
 
         <switches />
