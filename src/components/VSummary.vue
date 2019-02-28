@@ -20,13 +20,23 @@
             <ul>
               <li v-if="provider.monthlyFee > 0">
                 Monthly Fee: {{ provider.monthlyFee | money }}
+                <small>{{ provider.currency }}</small>
                 <icon-tooltip v-if="provider.currency !== region">
                   Billed in {{ provider.currency }}
                 </icon-tooltip>
+                <small v-if="provider.currency !== region">
+                  (~{{ provider.monthlyFee *  exchangeRates.USD_CAD | money }} {{ region }})
+                  <icon-tooltip v-if="provider.currency !== region">
+                    XR: {{ exchangeRates.USD_CAD }}
+                  </icon-tooltip>
+                </small>
               </li>
               <li v-if="listingFees > 0">Listing Fees: {{ listingFees | money }}</li>
               <li v-if="transactionFees > 0">Transaction Fees: {{ transactionFees | money }}</li>
-              <li>Processing Fees: {{ paymentProcessingFees | money }}</li>
+              <li>
+                Processing Fees: {{ paymentProcessingFees | money }}
+                <small>{{ region }}</small>
+              </li>
             </ul>
           </show-more>
         </li>
