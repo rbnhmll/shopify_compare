@@ -31,8 +31,8 @@
                   </icon-tooltip>
                 </small>
               </li>
-              <li v-if="listingFees > 0">Listing Fees: {{ listingFees | money }}</li>
-              <li v-if="transactionFees > 0">Transaction Fees: {{ transactionFees | money }}</li>
+              <li v-if="listingFees > 0">Listing Fees: {{ listingFees | money }} <small>{{ provider.currency }}</small></li>
+              <li v-if="transactionFees > 0">Transaction Fees: {{ transactionFees | money }} <small>{{ provider.currency }}</small></li>
               <li>
                 Processing Fees: {{ paymentProcessingFees | money }}
                 <small>{{ region }}</small>
