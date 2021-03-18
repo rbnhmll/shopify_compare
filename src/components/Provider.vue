@@ -184,6 +184,8 @@ export default {
 @import '../assets/styles/mixins'
 
 article
+  display flex
+  flex-direction column
   overflow hidden
   position relative
   margin 10px 10px
@@ -225,4 +227,7 @@ article
 
 .plus
   font-size 1.4rem
+
+.cta
+  margin-top auto
 </style>
