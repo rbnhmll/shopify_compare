@@ -161,13 +161,13 @@ export default {
         internationalDomains: {
           name: 'International Domains',
           id: 'internationalDomains',
-          value: true
+          value: true,
         },
         internationalPricing: {
           name: 'International Pricing',
           id: 'internationalPricing',
-          value: true
-        }
+          value: true,
+        },
       },
     },
     USD: {
@@ -215,13 +215,13 @@ export default {
         internationalDomains: {
           name: 'International Domains',
           id: 'internationalDomains',
-          value: true
+          value: true,
         },
         internationalPricing: {
           name: 'International Pricing',
           id: 'internationalPricing',
-          value: true
-        }
+          value: true,
+        },
       },
     },
   },
@@ -271,18 +271,18 @@ export default {
         internationalDomains: {
           name: 'International Domains',
           id: 'internationalDomains',
-          value: true
+          value: true,
         },
         internationalPricing: {
           name: 'International Pricing',
           id: 'internationalPricing',
-          value: true
+          value: true,
         },
         internationalPricingVariant: {
           name: 'International Pricing (per variant)',
           id: 'internationalPricingVariant',
-          value: true
-        }
+          value: true,
+        },
       },
     },
     USD: {
@@ -330,18 +330,18 @@ export default {
         internationalDomains: {
           name: 'International Domains',
           id: 'internationalDomains',
-          value: true
+          value: true,
         },
         internationalPricing: {
           name: 'International Pricing',
           id: 'internationalPricing',
-          value: true
+          value: true,
         },
         internationalPricingVariant: {
           name: 'International Pricing (per variant)',
           id: 'internationalPricingVariant',
-          value: true
-        }
+          value: true,
+        },
       },
     },
   },
