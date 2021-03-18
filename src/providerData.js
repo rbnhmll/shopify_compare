@@ -43,6 +43,11 @@ export default {
           id: 'maxStaffAccounts',
           value: 2,
         },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 4,
+        },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
@@ -59,7 +64,7 @@ export default {
           value: false,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: false,
         },
@@ -80,6 +85,11 @@ export default {
         maxStaffAccounts: {
           name: 'Staff Accounts',
           id: 'maxStaffAccounts',
+          value: 4,
+        },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
           value: 2,
         },
         giftCards: {
@@ -98,7 +108,7 @@ export default {
           value: false,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: false,
         },
@@ -123,6 +133,11 @@ export default {
           id: 'maxStaffAccounts',
           value: 5,
         },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 5,
+        },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
@@ -139,10 +154,20 @@ export default {
           value: false,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: false,
         },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true
+        }
       },
     },
     USD: {
@@ -162,6 +187,11 @@ export default {
           id: 'maxStaffAccounts',
           value: 5,
         },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 5,
+        },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
@@ -178,10 +208,20 @@ export default {
           value: false,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: false,
         },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true
+        }
       },
     },
   },
@@ -203,6 +243,11 @@ export default {
           id: 'maxStaffAccounts',
           value: 15,
         },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 8,
+        },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
@@ -219,10 +264,25 @@ export default {
           value: true,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: true,
         },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true
+        },
+        internationalPricingVariant: {
+          name: 'International Pricing (per variant)',
+          id: 'internationalPricingVariant',
+          value: true
+        }
       },
     },
     USD: {
@@ -242,6 +302,11 @@ export default {
           id: 'maxStaffAccounts',
           value: 15,
         },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 8,
+        },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
@@ -258,10 +323,25 @@ export default {
           value: true,
         },
         shippingRates: {
-          name: 'Third-party calculated shipping rates',
+          name: 'Third-party shipping rates',
           id: 'shippingRates',
           value: true,
         },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true
+        },
+        internationalPricingVariant: {
+          name: 'International Pricing (per variant)',
+          id: 'internationalPricingVariant',
+          value: true
+        }
       },
     },
   },
