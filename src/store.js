@@ -68,8 +68,8 @@ export default new Vuex.Store({
       shippingRates: false,
     },
     exchangeRates: {
-      CAD_USD: 0.75813,
-      USD_CAD: 1.31892,
+      CAD_USD: 0.801889,
+      USD_CAD: 1.24706,
     },
     providerData,
   },
