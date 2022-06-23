@@ -29,7 +29,7 @@ export default {
     CAD: {
       name: 'Basic Shopify',
       id: 'basicShopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 29,
       listingFeeFixed: 0,
@@ -73,7 +73,7 @@ export default {
     USD: {
       name: 'Basic Shopify',
       id: 'basicShopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 29,
       listingFeeFixed: 0,
@@ -119,7 +119,7 @@ export default {
     CAD: {
       name: 'Shopify',
       id: 'shopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 79,
       listingFeeFixed: 0,
@@ -173,7 +173,7 @@ export default {
     USD: {
       name: 'Shopify',
       id: 'shopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 79,
       listingFeeFixed: 0,
@@ -229,7 +229,7 @@ export default {
     CAD: {
       name: 'Advanced Shopify',
       id: 'advancedShopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 299,
       listingFeeFixed: 0,
@@ -288,7 +288,7 @@ export default {
     USD: {
       name: 'Advanced Shopify',
       id: 'advancedShopify',
-      affiliate: 'https://www.shopify.com/?ref=rbnhmll&utm_campaign=shopify_compare',
+      affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
       monthlyFee: 299,
       listingFeeFixed: 0,
