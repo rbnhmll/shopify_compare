@@ -1,7 +1,7 @@
 <template>
   <div class="cta content">
     <h3 class="cta__message">Get started with <strong class="hl">{{ rates.name }}</strong></h3>
-    <v-button :href="rates.affiliate" target="_blank">Sign up for free now!</v-button>
+    <v-button :href="rates.affiliate" target="_blank">Sign up for free!</v-button>
   </div>
 </template>
 
