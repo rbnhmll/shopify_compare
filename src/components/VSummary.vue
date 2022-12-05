@@ -25,9 +25,9 @@
                   Billed in {{ provider.currency }}
                 </icon-tooltip>
                 <small v-if="provider.currency !== region">
-                  (~{{ provider.monthlyFee *  exchangeRates.USD_CAD | money }} {{ region }})
+                  (~{{ provider.monthlyFee *  exchangeRates.USD | money }} {{ region }})
                   <icon-tooltip v-if="provider.currency !== region">
-                    XR: {{ exchangeRates.USD_CAD }}
+                    XR: {{ exchangeRates.USD }}
                   </icon-tooltip>
                 </small>
               </li>

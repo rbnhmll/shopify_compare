@@ -143,7 +143,7 @@ export default {
     },
     proratedMonthlyFee() {
       const monthlyFee = this.region === 'CAD'
-        ? this.rates.monthlyFee * this.exchangeRates.USD_CAD
+        ? this.rates.monthlyFee * this.exchangeRates.USD
         : this.rates.monthlyFee;
       return monthlyFee / (this.userInfo.transactionCount / this.$store.state.months);
     },

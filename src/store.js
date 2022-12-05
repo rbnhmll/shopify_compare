@@ -68,8 +68,8 @@ export default new Vuex.Store({
       shippingRates: false,
     },
     exchangeRates: {
-      CAD_USD: 0.801889,
-      USD_CAD: 1.24706,
+      CAD: 0.73655437,
+      USD: 1,
     },
     providerData,
   },
@@ -100,10 +100,10 @@ export default new Vuex.Store({
     setProReports: (state, value) => Vue.set(state.reqs, 'proReports', value),
     setAdvReports: (state, value) => Vue.set(state.reqs, 'advReports', value),
     setShippingRates: (state, value) => Vue.set(state.reqs, 'shippingRates', value),
-    setExchangeRates: (state, { CAD_USD, USD_CAD }) => {
+    setExchangeRates: (state, { CAD, USD }) => {
       Object.assign(state.exchangeRates, {
-        CAD_USD,
-        USD_CAD,
+        CAD,
+        USD,
       });
     },
   },
@@ -118,12 +118,15 @@ export default new Vuex.Store({
     setAdvReports: (context, val) => context.commit('setAdvReports', val),
     setShippingRates: (context, val) => context.commit('setShippingRates', val),
     getExchangeRates: (context) => {
-      const endpoint = 'https://free.currencyconverterapi.com/api/v6/convert?q=CAD_USD,USD_CAD&compact=ultra&apiKey=f3b0ddafa92827d8978f';
+      const endpoint = 'https://api.currencyapi.com/v3/latest?apikey=Ns2PWtFB4ujlRRLibG4Y6xFxMpWmj9mfB7wD9ZtY&currencies=USD%2CCAD';
 
       fetch(endpoint)
         .then(response => response.json())
         .then((response) => {
-          context.commit('setExchangeRates', response);
+          context.commit('setExchangeRates', {
+            CAD: response.data.CAD.value,
+            USD: response.data.USD.value,
+          });
         })
         .catch(err => console.error('Failed to fetch exchange rates. Using fallback values: ', err));
     },

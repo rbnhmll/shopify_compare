@@ -9,8 +9,7 @@
           <li>This tool is not associated in any way with Shopify, and as such, pricing could change without warning. This tool is intended for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
           <li>Currency conversions are based on an external resource. Double check conversion rates. Today's rates are:
             <ul>
-              <li>CAD => USD: {{ exchangeRates.CAD_USD }}</li>
-              <li>USD => CAD: {{ exchangeRates.USD_CAD }}</li>
+              <li>CAD => USD: {{ exchangeRates.CAD }}</li>
             </ul>
           </li>
           <li>This site contains affiliate links to help support and maintain this tool.</li>
@@ -63,7 +62,6 @@ export default {
     },
   },
   mounted() {
-    // this.$refs.agree.focus();
     document.addEventListener('keyup', e => (e.keyCode === 27 ? this.close() : false));
   },
 };
