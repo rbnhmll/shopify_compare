@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="content wrapper">
-      <h1 class="hl">Shopify<br>Compare</h1>
+      <h1 class="hl">Shop<br>Compare</h1>
     </div>
   </header>
 </template>

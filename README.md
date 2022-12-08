@@ -1,4 +1,4 @@
-# shopify-compare
+# shop-compare
 
 ## Project setup
 ```
