@@ -11,7 +11,7 @@ export default {
   name: 'VHeader',
   data() {
     return {
-      title: 'Shopify Compare',
+      title: 'Shop Compare',
     };
   },
 };

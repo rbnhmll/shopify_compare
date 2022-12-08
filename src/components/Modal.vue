@@ -27,7 +27,7 @@
               <i class="far fa-external-link-alt"></i>
             </a>
           </li>
-          <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shopify Compare">email me</a> 😺.</li>
+          <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shop Compare">email me</a> 😺.</li>
         </ul>
 
         <v-button
