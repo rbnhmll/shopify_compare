@@ -7,7 +7,6 @@
         <v-button
           :href="$id($camel(`${bestValue.name}`))"
           shape="square"
-          v-smooth-scroll="{ duration: 500, offset: -35 }"
         >
           {{ bestValue.name }}
           <v-icon name="chevron-down" />

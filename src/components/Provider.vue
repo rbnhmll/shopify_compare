@@ -198,6 +198,9 @@ article
   overflow hidden
   position relative
   margin 10px 10px
+  // Breathing room above the card when jumped to from the tl;dr link; replaces the
+  // old directive's `offset: -35`.
+  scroll-margin-top 35px
   flex 1 0 280px
   border-radius var(--radius)
   background var(--white)

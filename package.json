@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "pinia": "^4.0.3",
-    "vue": "^3.5.41",
-    "vue3-smooth-scroll": "^0.8.1"
+    "vue": "^3.5.41"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",

@@ -1,6 +1,5 @@
 import { createApp, createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
-import smoothScroll from 'vue3-smooth-scroll';
 
 import App from './App.vue';
 import VIcon from './components/VIcon.vue';
@@ -17,14 +16,6 @@ export const createShopApp = ({ ssr = false } = {}) => {
 
   // Used in almost every component; registering globally avoids 11 local imports.
   app.component('VIcon', VIcon);
-
-  if (ssr) {
-    // vue3-smooth-scroll reaches for the DOM on install; the directive is a no-op
-    // in prerendered markup anyway.
-    app.directive('smooth-scroll', {});
-  } else {
-    app.use(smoothScroll);
-  }
 
   // Stand-ins for the Vue 2 filters, usable as {{ $money(value) }} in templates.
   Object.assign(app.config.globalProperties, {
