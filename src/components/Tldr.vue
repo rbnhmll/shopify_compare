@@ -2,10 +2,10 @@
   <section class="tldr">
     <div class="wrapper wrapper--mini content">
       <h2 class="hl">tl;dr</h2>
-      <p>With {{ avgRevenue | money }} in {{ timeFrame }} sales, the best value for you right now is:</p>
+      <p>With {{ $money(avgRevenue) }} in {{ timeFrame }} sales, the best value for you right now is:</p>
       <div class="cta">
         <v-button
-          :href="`${bestValue.name}` | camel | id"
+          :href="$id($camel(`${bestValue.name}`))"
           shape="square"
           v-smooth-scroll="{ duration: 500, offset: -35 }"
         >
@@ -18,7 +18,10 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+
 import VButton from './VButton.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'Tldr',
@@ -26,15 +29,7 @@ export default {
     VButton,
   },
   computed: {
-    bestValue() {
-      return this.$store.getters.bestValue;
-    },
-    avgRevenue() {
-      return this.$store.getters.avgRevenue;
-    },
-    timeFrame() {
-      return this.$store.getters.timeFrame;
-    },
+    ...mapState(useShopStore, ['bestValue', 'avgRevenue', 'timeFrame']),
   },
 };
 </script>

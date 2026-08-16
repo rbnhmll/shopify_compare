@@ -1,12 +1,12 @@
 <template>
-  <article :id="rates.name | camel" :class="{ bestValue: isBestValue }">
+  <article :id="$camel(rates.name)" :class="{ bestValue: isBestValue }">
     <best-banner v-if="isBestValue" />
     <div class="content">
       <h2 class="hl provider__name">{{ rates.name }}</h2>
       <ul class="rates">
         <li>
           <i class="far fa-calendar-alt"></i>
-          Monthly Fee: {{ rates.monthlyFee | money }}
+          Monthly Fee: {{ $money(rates.monthlyFee) }}
           <span class="currency">
             <small>{{ rates.currency }}</small>
             <icon-tooltip v-if="rates.monthlyFee > 0">
@@ -16,51 +16,51 @@
         </li>
         <li>
           <i class="far fa-list-alt"></i>
-          Item Listing Fee: {{ rates.listingFeeFixed | money }}
+          Item Listing Fee: {{ $money(rates.listingFeeFixed) }}
         </li>
         <li v-if="rates.salesFeePercentage > 0 || rates.shippingFeePercentage > 0">
           <i class="far fa-money-bill"></i>
           Transaction Fee:
-          <template >
-            {{ rates.salesFeePercentage | percent }}
+          <template>
+            {{ $percent(rates.salesFeePercentage) }}
             <icon-tooltip>
               Sale + Shipping
             </icon-tooltip>
           </template>
           <ul v-if="rates.salesFeePercentage !== rates.shippingFeePercentage">
-            <li v-if="rates.salesFeePercentage > 0">{{ rates.salesFeePercentage | percent }}</li>
-            <li v-if="rates.shippingFeePercentage > 0">{{ rates.shippingFeePercentage | percent }}</li>
+            <li v-if="rates.salesFeePercentage > 0">{{ $percent(rates.salesFeePercentage) }}</li>
+            <li v-if="rates.shippingFeePercentage > 0">{{ $percent(rates.shippingFeePercentage) }}</li>
           </ul>
         </li>
         <li>
           <i class="far fa-credit-card"></i>
           Processing Fees:
-            <span v-if="paymentProcessingFeePercentage > 0">{{ paymentProcessingFeePercentage | percent }} + </span>
-            <span v-if="paymentProcessingFeeFixed > 0">{{ paymentProcessingFeeFixed | money }}</span>
+            <span v-if="paymentProcessingFeePercentage > 0">{{ $percent(paymentProcessingFeePercentage) }} + </span>
+            <span v-if="paymentProcessingFeeFixed > 0">{{ $money(paymentProcessingFeeFixed) }}</span>
           <icon-tooltip v-if="rates.monthlyFee > 0">
             Billed in {{ region }}
           </icon-tooltip>
           <show-more>
             <ul>
               <li v-if="paymentProcessingFeePercentage > 0">
-                Payment Processing Fee: {{ paymentProcessingFeePercentage | percent }}
+                Payment Processing Fee: {{ $percent(paymentProcessingFeePercentage) }}
               </li>
               <li v-if="paymentProcessingFeeFixed > 0">
-                Payment Processing Fixed Fee: {{ paymentProcessingFeeFixed | money }}
+                Payment Processing Fixed Fee: {{ $money(paymentProcessingFeeFixed) }}
               </li>
             </ul>
           </show-more>
         </li>
         <li>
           <i class="far fa-equals"></i>
-          Total Fees: {{ totalFeesPerMonth | money }} <small>{{ region }}</small>
+          Total Fees: {{ $money(totalFeesPerMonth) }} <small>{{ region }}</small>
           <icon-tooltip>
             Based on monthly sales
           </icon-tooltip>
           <show-more>
             <ul>
               <li>
-                Total Cost Per Sale: {{ averageCostPerSale | money }}
+                Total Cost Per Sale: {{ $money(averageCostPerSale) }}
               </li>
               <li>
                 Total Fee % Per Sale: {{ feePercentagePerSale }}%
@@ -72,16 +72,14 @@
       <div v-if="rates.additionalFeatures">
         <h4 class="plus__heading hl">Plus:</h4>
         <ul class="plus">
-          <li
-            v-for="feature in rates.additionalFeatures"
-            :key="feature.name"
-            v-if="feature.value"
-          >
-            <span
-              v-if="typeof feature.value === 'number'"
-            >{{ feature.value }}</span>
-            {{ feature.name }}
-          </li>
+          <template v-for="feature in rates.additionalFeatures" :key="feature.name">
+            <li v-if="feature.value">
+              <span
+                v-if="typeof feature.value === 'number'"
+              >{{ feature.value }}</span>
+              {{ feature.name }}
+            </li>
+          </template>
         </ul>
       </div>
     </div>
@@ -90,11 +88,13 @@
 </template>
 
 <script>
-import VButton from './VButton.vue';
+import { mapState } from 'pinia';
+
 import IconTooltip from './IconTooltip.vue';
 import ShowMore from './ShowMore.vue';
 import BestBanner from './BestBanner.vue';
 import Cta from './Cta.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'Provider',
@@ -104,25 +104,14 @@ export default {
     },
   },
   components: {
-    VButton,
     IconTooltip,
     ShowMore,
     BestBanner,
     Cta,
   },
+  emits: ['total'],
   computed: {
-    region() {
-      return this.$store.state.region;
-    },
-    exchangeRates() {
-      return this.$store.state.exchangeRates;
-    },
-    bestValue() {
-      return this.$store.state.bestValue;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
+    ...mapState(useShopStore, ['region', 'exchangeRates', 'userInfo', 'months', 'bestValue']),
     salesFeeAmount() {
       return this.userInfo.avgTransactionPrice * this.rates.salesFeePercentage;
     },
@@ -145,7 +134,7 @@ export default {
       const monthlyFee = this.region === 'CAD'
         ? this.rates.monthlyFee * this.exchangeRates.USD
         : this.rates.monthlyFee;
-      return monthlyFee / (this.userInfo.transactionCount / this.$store.state.months);
+      return monthlyFee / (this.userInfo.transactionCount / this.months);
     },
     averageCostPerSale() {
       return this.salesFeeAmount
@@ -156,14 +145,9 @@ export default {
       + this.proratedMonthlyFee;
     },
     totalFeesPerMonth() {
-      const total = (this.userInfo.transactionCount *
+      return (this.userInfo.transactionCount *
       this.averageCostPerSale) /
-      this.$store.state.months;
-      this.$emit('total', {
-        name: this.rates.id,
-        total,
-      });
-      return total;
+      this.months;
     },
     feePercentagePerSale() {
       const percent = ((this.averageCostPerSale / this.userInfo.avgTransactionPrice) * 100)
@@ -171,10 +155,23 @@ export default {
       return percent !== Infinity ? percent : '';
     },
     isBestValue() {
-      if (this.$store.getters.bestValue.name === this.rates.name) {
+      if (this.bestValue.name === this.rates.name) {
         return true;
       }
       return false;
+    },
+  },
+  watch: {
+    // Was emitted from inside the totalFeesPerMonth computed, which mutated the
+    // store mid-render. Vue 3 schedules this after the value settles instead.
+    totalFeesPerMonth: {
+      immediate: true,
+      handler(total) {
+        this.$emit('total', {
+          name: this.rates.id,
+          total,
+        });
+      },
     },
   },
 };

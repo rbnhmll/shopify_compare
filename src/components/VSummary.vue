@@ -8,33 +8,33 @@
       <ul class="rates">
         <li>
           <i class="far fa-hand-holding-usd"></i>
-          Avg. {{ timeFrame }} Sales: {{ avgRevenue | money }} <small>{{ region }}</small>
+          Avg. {{ timeFrame }} Sales: {{ $money(avgRevenue) }} <small>{{ region }}</small>
         </li>
         <li>
           <i class="far fa-minus"></i>&nbsp;
         </li>
         <li>
           <i class="far fa-file-invoice-dollar"></i>
-          Total {{ timeFrame }} Fees: {{ totalFees | money }} <small>{{ region }}</small>
+          Total {{ timeFrame }} Fees: {{ $money(totalFees) }} <small>{{ region }}</small>
           <show-more>
             <ul>
               <li v-if="provider.monthlyFee > 0">
-                Monthly Fee: {{ provider.monthlyFee | money }}
+                Monthly Fee: {{ $money(provider.monthlyFee) }}
                 <small>{{ provider.currency }}</small>
                 <icon-tooltip v-if="provider.currency !== region">
                   Billed in {{ provider.currency }}
                 </icon-tooltip>
                 <small v-if="provider.currency !== region">
-                  (~{{ provider.monthlyFee *  exchangeRates.USD | money }} {{ region }})
+                  (~{{ $money(provider.monthlyFee * exchangeRates.USD) }} {{ region }})
                   <icon-tooltip v-if="provider.currency !== region">
                     XR: {{ exchangeRates.USD }}
                   </icon-tooltip>
                 </small>
               </li>
-              <li v-if="listingFees > 0">Listing Fees: {{ listingFees | money }} <small>{{ provider.currency }}</small></li>
-              <li v-if="transactionFees > 0">Transaction Fees: {{ transactionFees | money }} <small>{{ provider.currency }}</small></li>
+              <li v-if="listingFees > 0">Listing Fees: {{ $money(listingFees) }} <small>{{ provider.currency }}</small></li>
+              <li v-if="transactionFees > 0">Transaction Fees: {{ $money(transactionFees) }} <small>{{ provider.currency }}</small></li>
               <li>
-                Processing Fees: {{ paymentProcessingFees | money }}
+                Processing Fees: {{ $money(paymentProcessingFees) }}
                 <small>{{ region }}</small>
               </li>
             </ul>
@@ -42,7 +42,7 @@
         </li>
         <li>
           <i class="far fa-equals"></i>
-          Profit: {{ profit | money }} <small>{{ region }}</small>
+          Profit: {{ $money(profit) }} <small>{{ region }}</small>
         </li>
       </ul>
       <p>
@@ -53,46 +53,36 @@
 </template>
 
 <script>
-import VButton from './VButton.vue';
+import { mapState } from 'pinia';
+
 import IconTooltip from './IconTooltip.vue';
 import ShowMore from './ShowMore.vue';
 import Cta from './Cta.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
-  name: 'Summary',
+  name: 'VSummary',
   components: {
-    VButton,
     IconTooltip,
     ShowMore,
     Cta,
   },
   computed: {
-    avgRevenue() {
-      return this.$store.getters.avgRevenue;
-    },
+    ...mapState(useShopStore, [
+      'avgRevenue',
+      'exchangeRates',
+      'timeFrame',
+      'region',
+      'providerCalculated',
+      'userInfo',
+      'months',
+    ]),
+    ...mapState(useShopStore, { provider: 'bestValue' }),
     totalFees() {
-      return this.providerCalculated[this.provider.id].total * this.$store.state.months;
-    },
-    provider() {
-      return this.$store.getters.bestValue;
-    },
-    exchangeRates() {
-      return this.$store.state.exchangeRates;
-    },
-    timeFrame() {
-      return this.$store.getters.timeFrame;
-    },
-    region() {
-      return this.$store.state.region;
-    },
-    providerCalculated() {
-      return this.$store.state.providerCalculated;
+      return this.providerCalculated[this.provider.id].total * this.months;
     },
     profit() {
       return this.avgRevenue - this.totalFees;
-    },
-    userInfo() {
-      return this.$store.state.userInfo;
     },
     listingFees() {
       return this.provider.listingFeeFixed * this.userInfo.transactionCount;

@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { useShopStore } from '../stores/shop';
+
 export default {
   name: 'TimeframeSwitcher',
   data() {
@@ -25,12 +27,15 @@ export default {
     };
   },
   computed: {
+    store() {
+      return useShopStore();
+    },
     months: {
       get() {
-        return this.$store.state.months;
+        return this.store.months;
       },
       set(val) {
-        this.$store.dispatch('setMonths', val);
+        this.store.setMonths(val);
       },
     },
   },

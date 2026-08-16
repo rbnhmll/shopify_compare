@@ -40,26 +40,30 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+
 import Switches from './Switches.vue';
 import VRange from './VRange.vue';
 import AdvancedOptions from './AdvancedOptions.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'InputForm',
   components: {
     VRange,
+    // Kept registered for the commented-out <advanced-options /> in the template.
+    // eslint-disable-next-line vue/no-unused-components
     AdvancedOptions,
     Switches,
   },
   methods: {
+    ...mapActions(useShopStore, ['setUserInfo']),
     updateField(field, value) {
-      this.$store.dispatch('setUserInfo', { field, value });
+      this.setUserInfo({ field, value });
     },
   },
   computed: {
-    userInfo() {
-      return this.$store.state.userInfo;
-    },
+    ...mapState(useShopStore, ['userInfo']),
   },
 };
 </script>

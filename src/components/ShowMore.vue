@@ -1,6 +1,6 @@
 <template>
   <div class="show_more">
-    <v-button class="more_button" shape="small" @click.native="show = !show">
+    <v-button class="more_button" shape="small" @click="show = !show">
       <template v-if="!show">
         <i class="far fa-plus"></i>
         See details
@@ -42,7 +42,7 @@ export default {
 .drawer-leave-active
   transition(opacity)
 
-.drawer-enter,
+.drawer-enter-from,
 .drawer-leave-to
   opacity 0
 

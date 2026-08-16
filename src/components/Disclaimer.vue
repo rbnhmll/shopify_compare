@@ -1,7 +1,7 @@
 <template>
   <div class="disclaimer">
     <v-button
-      @click.native="showModal = !showModal"
+      @click="showModal = !showModal"
       shape="round"
     >
       <i class="fas fa-info"></i>

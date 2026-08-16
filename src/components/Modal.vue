@@ -31,7 +31,7 @@
         </ul>
 
         <v-button
-          @click.native="close"
+          @click="close"
           shape="square"
           type="button"
           ref="agree"
@@ -44,25 +44,33 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+
 import VButton from './VButton.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'Modal',
   components: {
     VButton,
   },
+  emits: ['close'],
   methods: {
     close() {
       this.$emit('close');
     },
-  },
-  computed: {
-    exchangeRates() {
-      return this.$store.state.exchangeRates;
+    onKeyup(e) {
+      return e.key === 'Escape' ? this.close() : false;
     },
   },
+  computed: {
+    ...mapState(useShopStore, ['exchangeRates']),
+  },
   mounted() {
-    document.addEventListener('keyup', e => (e.keyCode === 27 ? this.close() : false));
+    document.addEventListener('keyup', this.onKeyup);
+  },
+  unmounted() {
+    document.removeEventListener('keyup', this.onKeyup);
   },
 };
 </script>

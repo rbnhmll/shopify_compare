@@ -1,25 +1,23 @@
-import vueSmoothScroll from 'vue2-smooth-scroll';
-import '@babel/polyfill';
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import smoothScroll from 'vue3-smooth-scroll';
+
 import App from './App.vue';
-import store from './store';
+import {
+  camel, id, money, percent,
+} from './format';
 
-Vue.use(vueSmoothScroll);
+const app = createApp(App);
 
-Vue.config.productionTip = false;
+app.use(createPinia());
+app.use(smoothScroll);
 
-Vue.filter('money', value => `$${value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`);
+// Stand-ins for the Vue 2 filters, usable as {{ $money(value) }} in templates.
+Object.assign(app.config.globalProperties, {
+  $camel: camel,
+  $id: id,
+  $money: money,
+  $percent: percent,
+});
 
-Vue.filter('camel', value => value
-  .replace(/\s(.)/g, $1 => $1.toUpperCase())
-  .replace(/\s/g, '')
-  .replace(/^(.)/, $1 => $1.toLowerCase()));
-
-Vue.filter('id', value => `#${value}`);
-
-Vue.filter('percent', value => `${(value * 100).toFixed(1)}%`);
-
-new Vue({
-  store,
-  render: h => h(App),
-}).$mount('#app');
+app.mount('#app');

@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { useShopStore } from '../stores/shop';
+
 export default {
   name: 'RegionSwitcher',
   data() {
@@ -22,12 +24,15 @@ export default {
     };
   },
   computed: {
+    store() {
+      return useShopStore();
+    },
     region: {
       get() {
-        return this.$store.state.region;
+        return this.store.region;
       },
       set(val) {
-        this.$store.dispatch('setRegion', val);
+        this.store.setRegion(val);
       },
     },
   },

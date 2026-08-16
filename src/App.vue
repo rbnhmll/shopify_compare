@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+
 import VHeader from './components/VHeader.vue';
 import InputForm from './components/InputForm.vue';
 import Tldr from './components/Tldr.vue';
@@ -20,6 +22,7 @@ import VSummary from './components/VSummary.vue';
 import ProviderLoop from './components/ProviderLoop.vue';
 import VFooter from './components/VFooter.vue';
 import Disclaimer from './components/Disclaimer.vue';
+import { useShopStore } from './stores/shop';
 
 export default {
   name: 'App',
@@ -33,15 +36,16 @@ export default {
     Disclaimer,
   },
   computed: {
+    ...mapState(useShopStore, ['months']),
     currentYear() {
       return (new Date()).getFullYear();
     },
-    months() {
-      return this.$store.state.months;
-    },
   },
   created() {
-    this.$store.dispatch('getExchangeRates');
+    this.getExchangeRates();
+  },
+  methods: {
+    ...mapActions(useShopStore, ['getExchangeRates']),
   },
 };
 </script>

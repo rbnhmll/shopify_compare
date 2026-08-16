@@ -11,7 +11,7 @@
         type="range"
         :name="name"
         v-model.number="selection"
-        v-on="listeners">
+        @input="$emit('change', selection)">
       <span
         :style="valPosition"
         class="valueMarker">{{ selection }}</span>
@@ -22,7 +22,7 @@
         :min="min"
         type="number"
         v-model.number="selection"
-        v-on="listeners"
+        @input="$emit('change', selection)"
       >
     </div>
   </div>
@@ -32,6 +32,9 @@
 export default {
   name: 'RangeSlider',
   inheritAttrs: false,
+  // Declaring `change` keeps the parent's @change out of $attrs, so v-bind="$attrs"
+  // below cannot also wire it to the input's native change event.
+  emits: ['change'],
   props: {
     name: {
       type: String,
@@ -72,11 +75,6 @@ export default {
     };
   },
   computed: {
-    listeners() {
-      return {
-        input: () => this.$emit('change', this.selection),
-      };
-    },
     valPosition() {
       const range = this.max - this.min;
       const ratio = this.selection - this.min;

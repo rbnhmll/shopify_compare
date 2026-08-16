@@ -1,9 +1,11 @@
 <template>
   <v-expansion-panel>
     <v-expansion-panel-content>
-      <div slot="header">
-        <h3>Advanced Options</h3>
-      </div>
+      <template #header>
+        <div>
+          <h3>Advanced Options</h3>
+        </div>
+      </template>
       <v-container>
         <p>These requirements will overide "Best Value" in suggesting a tier.</p>
         <v-layout row wrap justify-space-between>
@@ -59,47 +61,52 @@
 </template>
 
 <script>
+import { useShopStore } from '../stores/shop';
+
 export default {
   name: 'AdvancedOptions',
   computed: {
+    store() {
+      return useShopStore();
+    },
     maxStaffAccounts: {
       get() {
-        return this.$store.state.reqs.maxStaffAccounts;
+        return this.store.reqs.maxStaffAccounts;
       },
       set(value) {
-        this.$store.dispatch('setMaxStaffAccounts', value);
+        this.store.setMaxStaffAccounts(value);
       },
     },
     giftCards: {
       get() {
-        return this.$store.state.reqs.giftCards;
+        return this.store.reqs.giftCards;
       },
       set(value) {
-        this.$store.dispatch('setGiftCard', value);
+        this.store.setGiftCard(value);
       },
     },
     proReports: {
       get() {
-        return this.$store.state.reqs.proReports;
+        return this.store.reqs.proReports;
       },
       set(value) {
-        this.$store.dispatch('setProReports', value);
+        this.store.setProReports(value);
       },
     },
     advReports: {
       get() {
-        return this.$store.state.reqs.advReports;
+        return this.store.reqs.advReports;
       },
       set(value) {
-        this.$store.dispatch('setAdvReports', value);
+        this.store.setAdvReports(value);
       },
     },
     shippingRates: {
       get() {
-        return this.$store.state.reqs.shippingRates;
+        return this.store.reqs.shippingRates;
       },
       set(value) {
-        this.$store.dispatch('setShippingRates', value);
+        this.store.setShippingRates(value);
       },
     },
   },

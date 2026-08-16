@@ -10,7 +10,10 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+
 import Provider from './Provider.vue';
+import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'ProviderLoop',
@@ -18,20 +21,13 @@ export default {
     Provider,
   },
   methods: {
+    ...mapActions(useShopStore, ['setTotals']),
     collectValues(val) {
-      this.$store.dispatch('setTotals', val);
+      this.setTotals(val);
     },
   },
   computed: {
-    providerData() {
-      return this.$store.state.providerData;
-    },
-    timeframe() {
-      return this.$store.getters.timeFrame;
-    },
-    region() {
-      return this.$store.state.region;
-    },
+    ...mapState(useShopStore, ['providerData', 'timeFrame', 'region']),
   },
 };
 </script>
