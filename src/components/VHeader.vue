@@ -2,6 +2,7 @@
   <header>
     <div class="content wrapper">
       <h1 class="hl">Shop<br>Compare</h1>
+      <p class="tagline">Compare Shopify and Etsy fees side by side and find the cheapest plan for your sales volume.</p>
     </div>
   </header>
 </template>
@@ -9,11 +10,6 @@
 <script>
 export default {
   name: 'VHeader',
-  data() {
-    return {
-      title: 'Shop Compare',
-    };
-  },
 };
 </script>
 
@@ -25,6 +21,8 @@ header
 
 .content
   display flex
+  flex-direction column
+  align-items flex-end
   justify-content flex-end
 
 h1
@@ -33,4 +31,11 @@ h1
   display inline-block
   text-align right
   color: var(--white)
+
+.tagline
+  color var(--white)
+  text-align right
+  max-width 46ch
+  margin-top 2rem
+  line-height 1.4
 </style>

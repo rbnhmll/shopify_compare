@@ -2,11 +2,11 @@
   <div class="show_more">
     <v-button class="more_button" shape="small" @click="show = !show">
       <template v-if="!show">
-        <i class="far fa-plus"></i>
+        <v-icon name="plus" />
         See details
       </template>
       <template v-else>
-        <i class="far fa-minus"></i>
+        <v-icon name="minus" />
         Hide details
       </template>
     </v-button>
@@ -51,6 +51,6 @@ export default {
   // margin-left 20px
   display flex
   grid-template-columns auto auto
-  i
+  .icon
     margin-right .5em
 </style>

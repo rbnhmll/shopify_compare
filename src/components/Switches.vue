@@ -31,7 +31,7 @@ export default {
 
 .select-wrapper
   position relative
-  i
+  .icon
     position absolute
     right 5px
     top 50%

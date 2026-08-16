@@ -5,7 +5,7 @@
       <h2 class="hl provider__name">{{ rates.name }}</h2>
       <ul class="rates">
         <li>
-          <i class="far fa-calendar-alt"></i>
+          <v-icon name="calendar-alt" />
           Monthly Fee: {{ $money(effectiveMonthlyFee) }}
           <span class="currency">
             <small>{{ rates.currency }}</small>
@@ -15,11 +15,11 @@
           </span>
         </li>
         <li v-if="showEtsy">
-          <i class="far fa-list-alt"></i>
+          <v-icon name="list-alt" />
           Item Listing Fee: {{ $money(rates.listingFeeFixed) }}
         </li>
         <li v-if="rates.salesFeePercentage > 0 || rates.shippingFeePercentage > 0">
-          <i class="far fa-money-bill"></i>
+          <v-icon name="money-bill" />
           Transaction Fee:
           {{ $percent(rates.salesFeePercentage) }}
           <icon-tooltip>
@@ -31,7 +31,7 @@
           </ul>
         </li>
         <li>
-          <i class="far fa-credit-card"></i>
+          <v-icon name="credit-card" />
           Processing Fees:
             <span v-if="paymentProcessingFeePercentage > 0">{{ $percent(paymentProcessingFeePercentage) }} + </span>
             <span v-if="paymentProcessingFeeFixed > 0">{{ $money(paymentProcessingFeeFixed) }}</span>
@@ -50,7 +50,7 @@
           </show-more>
         </li>
         <li>
-          <i class="far fa-equals"></i>
+          <v-icon name="equals" />
           Total Fees: {{ $money(totalFeesPerMonth) }} <small>{{ region }}</small>
           <icon-tooltip>
             Based on monthly sales
@@ -219,7 +219,7 @@ article
     position relative
     padding: 3px
     padding-left 25px
-    i
+    .icon
       position absolute
       left 0
       top 7px

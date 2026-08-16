@@ -1,6 +1,6 @@
 <template>
   <span class="iconTooltip">
-    <i class="trigger" :class="icon" tabindex="0"></i>
+    <span class="trigger" tabindex="0"><v-icon :name="icon" /></span>
     <span class="tooltip">
       <slot></slot>
     </span>
@@ -13,7 +13,7 @@ export default {
   props: {
     icon: {
       type: String,
-      default: 'far fa-info-circle',
+      default: 'info-circle',
     },
   },
 };

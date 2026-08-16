@@ -7,14 +7,14 @@
       </h3>
       <ul class="rates">
         <li>
-          <i class="far fa-hand-holding-usd"></i>
+          <v-icon name="hand-holding-usd" />
           Avg. {{ timeFrame }} Sales: {{ $money(avgRevenue) }} <small>{{ region }}</small>
         </li>
         <li>
-          <i class="far fa-minus"></i>&nbsp;
+          <v-icon name="minus" />&nbsp;
         </li>
         <li>
-          <i class="far fa-file-invoice-dollar"></i>
+          <v-icon name="file-invoice-dollar" />
           Total {{ timeFrame }} Fees: {{ $money(totalFees) }} <small>{{ region }}</small>
           <show-more>
             <ul>
@@ -32,7 +32,7 @@
           </show-more>
         </li>
         <li>
-          <i class="far fa-equals"></i>
+          <v-icon name="equals" />
           Profit: {{ $money(profit) }} <small>{{ region }}</small>
         </li>
       </ul>
@@ -116,7 +116,7 @@ export default {
     position relative
     padding: 3px
     padding-left 25px
-    i
+    .icon
       position absolute
       left 0
       top 7px

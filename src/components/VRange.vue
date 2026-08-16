@@ -17,7 +17,7 @@
         class="valueMarker">{{ selection }}</span>
     </div>
     <div class="input-wrapper">
-      <span class="price" v-if="price"><i class="far fa-dollar-sign"></i></span>
+      <span class="price" v-if="price"><v-icon name="dollar-sign" /></span>
       <input
         :min="min"
         type="number"

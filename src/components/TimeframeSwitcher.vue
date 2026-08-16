@@ -8,7 +8,7 @@
             :key="option.text"
           >{{ option.text }}</option>
         </select>
-        <i class="far fa-chevron-down"></i>
+        <v-icon name="chevron-down" />
       </div>
     </label>
 </template>

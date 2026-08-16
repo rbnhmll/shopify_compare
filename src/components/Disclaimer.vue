@@ -4,7 +4,7 @@
       @click="showModal = !showModal"
       shape="round"
     >
-      <i class="fas fa-info"></i>
+      <v-icon name="info" />
     </v-button>
     <modal v-if="showModal" @close="showModal = false"/>
   </div>

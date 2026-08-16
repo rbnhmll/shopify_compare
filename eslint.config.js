@@ -5,7 +5,7 @@ export default [
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   {
-    files: ['**/*.{js,vue}'],
+    files: ['**/*.{js,mjs,vue}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',

@@ -10,7 +10,7 @@
           v-smooth-scroll="{ duration: 500, offset: -35 }"
         >
           {{ bestValue.name }}
-          <i class="far fa-chevron-down"></i>
+          <v-icon name="chevron-down" />
         </v-button>
       </div>
     </div>
@@ -46,6 +46,6 @@ h3
   text-align center
 
 .button
-  i
+  .icon
     margin-left 20px
 </style>

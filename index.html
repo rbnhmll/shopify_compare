@@ -4,29 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-6jHF7Z3XI3fF4XZixAuSu0gGKrXwoX/w3uFPxC56OtjChio7wtTGJWRW53Nhx6Ev" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap">
 
-    <meta name='description' content='Find the best value pricing plan for your e-commerce store on Shopify or Etsy'>
-    <meta name='keywords' content='Shopify, Shopify Pricing, Best Shopify plan, Etsy, Etsy Pricing, Best value, Best deal, e-commerce, E-Commerce, Shopify vs. Etsy, Etsy Vs. Shopify, calulator'>
+    <meta name='description' content='Free calculator comparing Shopify and Etsy fees side by side. Enter your sales volume to see which plan actually costs least, in CAD or USD.'>
     <meta name='author' content='Robin Hamill'>
+    <link rel="canonical" href="%VITE_SITE_URL%/">
 
     <!-- Facebook -->
     <meta property='og:title' content='Shopify Compare | Find the right pricing plan for your shop'>
     <meta property='og:site_name' content='Shopify Compare'>
-    <meta property='og:url' content='https://shopify-compare.club'>
-    <meta property='og:description'  content='Find the best value pricing plan for your e-commerce store on Shopify or Etsy'>
+    <meta property='og:url' content='%VITE_SITE_URL%/'>
+    <meta property='og:description'  content='Free calculator comparing Shopify and Etsy fees side by side. Enter your sales volume to see which plan actually costs least, in CAD or USD.'>
     <meta property='og:type'  content='website'>
-    <meta property='og:image' content='https://shopify-compare.club/social.png'>
+    <meta property='og:image' content='%VITE_SITE_URL%/social.png'>
 
     <!-- Twitter -->
-    <meta property='twitter:site' content='https://shopify-compare.club'>
+    <meta property='twitter:site' content='%VITE_SITE_URL%/'>
     <meta property='twitter:card'  content='summary_large_image'>
     <meta property='twitter:creator' content='@rbnhmll'>
     <meta property='twitter:title' content='Shopify Compare'>
-    <meta property='twitter:description' content='Find the best value pricing plan for your e-commerce store on Shopify or Etsy'>
-    <meta property='twitter:image'  content='https://shopify-compare.club/social.png'>
+    <meta property='twitter:description' content='Free calculator comparing Shopify and Etsy fees side by side. Enter your sales volume to see which plan actually costs least, in CAD or USD.'>
+    <meta property='twitter:image'  content='%VITE_SITE_URL%/social.png'>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -48,10 +47,23 @@
     <meta name="msapplication-square310x310logo" content="/largetile.png" />
 
     <title>Shopify Compare | Find the right pricing plan for your shop</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Shop Compare",
+      "url": "%VITE_SITE_URL%/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "description": "Free calculator comparing Shopify and Etsy fees side by side, in CAD or USD.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but Shopify Compare doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>The figures below use default sales numbers. Enable JavaScript to enter your own and update the comparison.</strong>
     </noscript>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>

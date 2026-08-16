@@ -14,7 +14,7 @@
             Need a Shopify developer?
             <a href="https://www.upatfive.ca" target="_blank">
               Let's work together!
-              <i class="far fa-external-link-alt"></i>
+              <v-icon name="external-link-alt" />
             </a>
           </li>
           <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hello@upatfive.ca?subject=Issue on Shop Compare">email me</a> 😺.</li>
@@ -93,7 +93,7 @@ header
   font-size 1.4rem
   padding-left 1.2rem
   margin-bottom 3rem
-  i
+  .icon
     font-size .8em
 
 </style>
