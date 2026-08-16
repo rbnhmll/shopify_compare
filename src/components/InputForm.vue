@@ -11,7 +11,7 @@
             name="# of Transactions"
             id="numberOfTransaction"
             :min="1"
-            :max="10000"
+            :max="2000"
             @change="updateField('transactionCount', $event)"
           />
           <v-range
@@ -19,7 +19,7 @@
             name="Avg. Transaction Price"
             id="transactionPrice"
             :min="1"
-            :max="5000"
+            :max="1000"
             price
             @change="updateField('avgTransactionPrice', $event)"
           />
@@ -28,7 +28,7 @@
             name="Avg. Shipping Charged"
             id="shippingCost"
             :min="0"
-            :max="500"
+            :max="200"
             price
             @change="updateField('avgShippingCost', $event)"
           />

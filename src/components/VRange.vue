@@ -77,8 +77,10 @@ export default {
   computed: {
     valPosition() {
       const range = this.max - this.min;
-      const ratio = this.selection - this.min;
-      const posPercent = (ratio / range) * 100;
+      const ratio = (Number(this.selection) || 0) - this.min;
+      // The number field is intentionally uncapped so outliers can be typed past the
+      // slider's range; clamp the marker so it stays on the track when they are.
+      const posPercent = Math.min(100, Math.max(0, (ratio / range) * 100));
 
       const offset = 10;
       const offsetRange = -20;
