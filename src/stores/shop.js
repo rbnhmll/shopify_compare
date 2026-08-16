@@ -19,7 +19,7 @@ export const useShopStore = defineStore('shop', {
         },
       },
       basicShopify: {
-        name: 'Basic Shopify',
+        name: 'Shopify Basic',
         total: null,
         featureMatches: {
           maxStaffAccounts: false,
@@ -30,7 +30,7 @@ export const useShopStore = defineStore('shop', {
         },
       },
       shopify: {
-        name: 'Shopify',
+        name: 'Shopify Grow',
         total: null,
         featureMatches: {
           maxStaffAccounts: false,
@@ -41,7 +41,7 @@ export const useShopStore = defineStore('shop', {
         },
       },
       advancedShopify: {
-        name: 'Advanced Shopify',
+        name: 'Shopify Advanced',
         total: null,
         featureMatches: {
           maxStaffAccounts: null,

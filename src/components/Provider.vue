@@ -111,7 +111,7 @@ export default {
   },
   emits: ['total'],
   computed: {
-    ...mapState(useShopStore, ['region', 'exchangeRates', 'userInfo', 'months', 'bestValue']),
+    ...mapState(useShopStore, ['region', 'userInfo', 'months', 'bestValue']),
     salesFeeAmount() {
       return this.userInfo.avgTransactionPrice * this.rates.salesFeePercentage;
     },
@@ -128,13 +128,12 @@ export default {
       return this.rates.paymentProcessingFeePercentage;
     },
     paymentProcessingFeeAmount() {
-      return (this.userInfo.avgTransactionPrice + this.shippingFeeAmount) * this.paymentProcessingFeePercentage;
+      // Processing applies to what the buyer pays: item price + shipping charged.
+      return (this.userInfo.avgTransactionPrice + this.userInfo.avgShippingCost) * this.paymentProcessingFeePercentage;
     },
     proratedMonthlyFee() {
-      const monthlyFee = this.region === 'CAD'
-        ? this.rates.monthlyFee * this.exchangeRates.USD
-        : this.rates.monthlyFee;
-      return monthlyFee / (this.userInfo.transactionCount / this.months);
+      // providerData holds each region's native prices, so no FX conversion here.
+      return this.rates.monthlyFee / (this.userInfo.transactionCount / this.months);
     },
     averageCostPerSale() {
       return this.salesFeeAmount

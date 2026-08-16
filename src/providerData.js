@@ -1,3 +1,9 @@
+// Pricing last verified: 2026-08-16.
+// Shopify: https://www.shopify.com/pricing (and /ca/pricing) — Shopify bills Canadian
+// merchants natively in CAD, so each region block holds that region's real prices
+// rather than a converted USD figure.
+// Etsy: 6.5% transaction fee applies to item price AND buyer-paid shipping.
+
 export default {
   etsy: {
     CAD: {
@@ -6,9 +12,9 @@ export default {
       affiliate: 'https://www.etsy.com/ca/sell',
       currency: 'CAD',
       monthlyFee: 0,
-      listingFeeFixed: 0.26,
-      salesFeePercentage: 0.05,
-      shippingFeePercentage: 0.05,
+      listingFeeFixed: 0.27,
+      salesFeePercentage: 0.065,
+      shippingFeePercentage: 0.065,
       paymentProcessingFeeFixed: 0.25,
       paymentProcessingFeePercentage: 0.03,
     },
@@ -19,49 +25,44 @@ export default {
       currency: 'USD',
       monthlyFee: 0,
       listingFeeFixed: 0.2,
-      salesFeePercentage: 0.05,
-      shippingFeePercentage: 0.05,
+      salesFeePercentage: 0.065,
+      shippingFeePercentage: 0.065,
       paymentProcessingFeeFixed: 0.25,
       paymentProcessingFeePercentage: 0.03,
     },
   },
   basicShopify: {
     CAD: {
-      name: 'Basic Shopify',
+      name: 'Shopify Basic',
       id: 'basicShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
-      currency: 'USD',
-      monthlyFee: 39,
+      currency: 'CAD',
+      monthlyFee: 49,
       listingFeeFixed: 0,
       salesFeePercentage: 0,
       paymentProcessingFeeFixed: 0.3,
-      paymentProcessingFeePercentage: 0.029,
+      paymentProcessingFeePercentage: 0.028,
       shippingFeePercentage: 0,
       additionalFeatures: {
         maxStaffAccounts: {
           name: 'Staff Accounts',
           id: 'maxStaffAccounts',
-          value: 2,
+          value: 0,
         },
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 4,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
-          value: false,
+          value: true,
         },
         proReports: {
           name: 'Professional Reports',
           id: 'proReports',
-          value: false,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
-          value: false,
+          value: true,
         },
         shippingRates: {
           name: 'Third-party shipping rates',
@@ -71,7 +72,7 @@ export default {
       },
     },
     USD: {
-      name: 'Basic Shopify',
+      name: 'Shopify Basic',
       id: 'basicShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
@@ -85,27 +86,22 @@ export default {
         maxStaffAccounts: {
           name: 'Staff Accounts',
           id: 'maxStaffAccounts',
-          value: 4,
+          value: 0,
         },
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 2,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
           id: 'giftCards',
-          value: false,
+          value: true,
         },
         proReports: {
           name: 'Professional Reports',
           id: 'proReports',
-          value: false,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
-          value: false,
+          value: true,
         },
         shippingRates: {
           name: 'Third-party shipping rates',
@@ -117,15 +113,15 @@ export default {
   },
   shopify: {
     CAD: {
-      name: 'Shopify',
+      name: 'Shopify Grow',
       id: 'shopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
-      currency: 'USD',
-      monthlyFee: 105,
+      currency: 'CAD',
+      monthlyFee: 132,
       listingFeeFixed: 0,
       salesFeePercentage: 0,
       paymentProcessingFeeFixed: 0.3,
-      paymentProcessingFeePercentage: 0.027,
+      paymentProcessingFeePercentage: 0.026,
       shippingFeePercentage: 0,
       additionalFeatures: {
         maxStaffAccounts: {
@@ -136,7 +132,7 @@ export default {
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 5,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
@@ -147,11 +143,6 @@ export default {
           name: 'Professional Reports',
           id: 'proReports',
           value: true,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
-          value: false,
         },
         shippingRates: {
           name: 'Third-party shipping rates',
@@ -171,7 +162,7 @@ export default {
       },
     },
     USD: {
-      name: 'Shopify',
+      name: 'Shopify Grow',
       id: 'shopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
@@ -179,7 +170,7 @@ export default {
       listingFeeFixed: 0,
       salesFeePercentage: 0,
       paymentProcessingFeeFixed: 0.3,
-      paymentProcessingFeePercentage: 0.026,
+      paymentProcessingFeePercentage: 0.027,
       shippingFeePercentage: 0,
       additionalFeatures: {
         maxStaffAccounts: {
@@ -190,7 +181,7 @@ export default {
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 5,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
@@ -201,11 +192,6 @@ export default {
           name: 'Professional Reports',
           id: 'proReports',
           value: true,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
-          value: false,
         },
         shippingRates: {
           name: 'Third-party shipping rates',
@@ -227,11 +213,11 @@ export default {
   },
   advancedShopify: {
     CAD: {
-      name: 'Advanced Shopify',
+      name: 'Shopify Advanced',
       id: 'advancedShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
-      currency: 'USD',
-      monthlyFee: 399,
+      currency: 'CAD',
+      monthlyFee: 517,
       listingFeeFixed: 0,
       salesFeePercentage: 0,
       paymentProcessingFeeFixed: 0.3,
@@ -246,7 +232,7 @@ export default {
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 8,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
@@ -256,11 +242,6 @@ export default {
         proReports: {
           name: 'Professional Reports',
           id: 'proReports',
-          value: true,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
           value: true,
         },
         shippingRates: {
@@ -286,7 +267,7 @@ export default {
       },
     },
     USD: {
-      name: 'Advanced Shopify',
+      name: 'Shopify Advanced',
       id: 'advancedShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
       currency: 'USD',
@@ -294,7 +275,7 @@ export default {
       listingFeeFixed: 0,
       salesFeePercentage: 0,
       paymentProcessingFeeFixed: 0.3,
-      paymentProcessingFeePercentage: 0.024,
+      paymentProcessingFeePercentage: 0.025,
       shippingFeePercentage: 0,
       additionalFeatures: {
         maxStaffAccounts: {
@@ -305,7 +286,7 @@ export default {
         maxLocations: {
           name: 'Locations',
           id: 'maxLocations',
-          value: 8,
+          value: 10,
         },
         giftCards: {
           name: 'Gift Cards',
@@ -315,11 +296,6 @@ export default {
         proReports: {
           name: 'Professional Reports',
           id: 'proReports',
-          value: true,
-        },
-        advReports: {
-          name: 'Advanced report builder',
-          id: 'advReports',
           value: true,
         },
         shippingRates: {

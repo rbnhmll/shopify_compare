@@ -93,7 +93,10 @@ export default {
       return (salesFee + shippingFee) * this.provider.salesFeePercentage;
     },
     paymentProcessingPercent() {
-      return this.avgRevenue * this.provider.paymentProcessingFeePercentage;
+      // Matches Provider.vue: processing applies to item price + shipping charged.
+      const buyerPaid = (this.userInfo.avgTransactionPrice + this.userInfo.avgShippingCost)
+        * this.userInfo.transactionCount;
+      return buyerPaid * this.provider.paymentProcessingFeePercentage;
     },
     paymentProcessingfixed() {
       return this.userInfo.transactionCount * this.provider.paymentProcessingFeeFixed;
