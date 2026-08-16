@@ -10,6 +10,11 @@ export default {
       name: 'Etsy',
       id: 'etsy',
       affiliate: 'https://www.etsy.com/ca/sell',
+      ctaLabel: 'Start selling on Etsy',
+      // Charged during onboarding for many (not all) new shops, region-dependent
+      // and non-refundable. Disclosed in the FAQ, deliberately NOT part of the fee
+      // maths: it is conditional, so folding it into totals would mislead too.
+      setupFee: { min: 15, max: 29, currency: 'USD' },
       currency: 'CAD',
       monthlyFee: 0,
       listingFeeFixed: 0.27,
@@ -22,6 +27,11 @@ export default {
       name: 'Etsy',
       id: 'etsy',
       affiliate: 'https://www.etsy.com/sell',
+      ctaLabel: 'Start selling on Etsy',
+      // Charged during onboarding for many (not all) new shops, region-dependent
+      // and non-refundable. Disclosed in the FAQ, deliberately NOT part of the fee
+      // maths: it is conditional, so folding it into totals would mislead too.
+      setupFee: { min: 15, max: 29, currency: 'USD' },
       currency: 'USD',
       monthlyFee: 0,
       listingFeeFixed: 0.2,
@@ -36,6 +46,7 @@ export default {
       name: 'Shopify Basic',
       id: 'basicShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'CAD',
       monthlyFee: 49,
       listingFeeFixed: 0,
@@ -75,6 +86,7 @@ export default {
       name: 'Shopify Basic',
       id: 'basicShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'USD',
       monthlyFee: 39,
       listingFeeFixed: 0,
@@ -116,6 +128,7 @@ export default {
       name: 'Shopify Grow',
       id: 'shopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'CAD',
       monthlyFee: 132,
       listingFeeFixed: 0,
@@ -165,6 +178,7 @@ export default {
       name: 'Shopify Grow',
       id: 'shopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'USD',
       monthlyFee: 105,
       listingFeeFixed: 0,
@@ -216,6 +230,7 @@ export default {
       name: 'Shopify Advanced',
       id: 'advancedShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'CAD',
       monthlyFee: 517,
       listingFeeFixed: 0,
@@ -270,6 +285,7 @@ export default {
       name: 'Shopify Advanced',
       id: 'advancedShopify',
       affiliate: 'https://shopify.pxf.io/x9PMyO',
+      ctaLabel: 'Start your free trial',
       currency: 'USD',
       monthlyFee: 399,
       listingFeeFixed: 0,

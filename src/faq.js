@@ -34,6 +34,10 @@ export const buildFaq = (providerData, region) => {
       a: `Etsy charges ${money(etsy.listingFeeFixed)} per listing, a ${percent(etsy.salesFeePercentage)} transaction fee, and payment processing of ${processing(etsy)} for domestic orders. The ${percent(etsy.salesFeePercentage)} applies to the total the buyer pays, shipping included — not just the item price.`,
     },
     {
+      q: 'Does it cost anything to open an Etsy shop?',
+      a: `Etsy may charge a one-time set-up fee of $${etsy.setupFee.min}–$${etsy.setupFee.max} ${etsy.setupFee.currency} when you open a shop. It is not charged to every seller — it depends on your region and account — and it is non-refundable once paid. Because it is conditional, it is not included in the running totals on this page.`,
+    },
+    {
       q: 'Is Etsy cheaper than Shopify?',
       a: `It depends on your volume. Etsy has no monthly fee, so it wins at low sales volumes. Because it takes ${percent(etsy.salesFeePercentage)} of every sale on top of payment processing, its per-sale cost is much higher, and past a certain point ${basic.name} at ${money(basic.monthlyFee)} a month works out cheaper. This calculator finds that crossover point for your numbers.`,
     },

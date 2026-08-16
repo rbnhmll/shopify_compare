@@ -10,6 +10,7 @@
           <li>Prices are shown in each region's own currency as Shopify and Etsy bill them, so no currency conversion is applied. Switch region to see the other set of prices.</li>
           <li>This site contains affiliate links to help support and maintain this tool. Shopify Plus is the exception: those enquiries come straight to us by email and we submit them as partner referrals, not through an affiliate link.</li>
           <li>Shopify Plus covers one main store plus nine expansion stores under a single contract. Past ten stores, pricing is negotiated directly with Shopify, so the store count here stops at ten.</li>
+          <li>The totals here cover ongoing fees only. Etsy may charge a one-time, non-refundable set-up fee when you open a shop, and Shopify's advertised free trial is short and followed by a discounted introductory period — check both before you commit.</li>
           <li>
             Need a Shopify developer?
             <a href="https://www.upatfive.ca" target="_blank">
