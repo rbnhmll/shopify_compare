@@ -1,8 +1,8 @@
 <template>
   <section class="providers wrapper">
     <provider
-      v-for="rate in providerData"
-      :key="rate.name"
+      v-for="(rate, key) in visibleProviders"
+      :key="key"
       :rates="rate[region]"
       @total="collectValues($event)"
     />
@@ -27,7 +27,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(useShopStore, ['providerData', 'timeFrame', 'region']),
+    ...mapState(useShopStore, ['visibleProviders', 'timeFrame', 'region']),
   },
 };
 </script>

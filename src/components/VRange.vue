@@ -104,7 +104,7 @@ export default {
 
 .rangeSlider
   display grid
-  grid-template-columns 1fr 75px
+  grid-template-columns 1fr 90px
   align-items center
   grid-gap 0 20px
   label

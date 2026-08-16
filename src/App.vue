@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'pinia';
+import { mapState } from 'pinia';
 
 import VHeader from './components/VHeader.vue';
 import InputForm from './components/InputForm.vue';
@@ -40,12 +40,6 @@ export default {
     currentYear() {
       return (new Date()).getFullYear();
     },
-  },
-  created() {
-    this.getExchangeRates();
-  },
-  methods: {
-    ...mapActions(useShopStore, ['getExchangeRates']),
   },
 };
 </script>

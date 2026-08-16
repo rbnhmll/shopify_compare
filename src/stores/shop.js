@@ -51,7 +51,24 @@ export const useShopStore = defineStore('shop', {
           shippingRates: false,
         },
       },
+      shopifyPlus: {
+        name: 'Shopify Plus',
+        total: null,
+        featureMatches: {
+          maxStaffAccounts: null,
+          giftCards: false,
+          proReports: false,
+          advReports: false,
+          shippingRates: false,
+        },
+      },
     },
+    // Etsy is hidden by default to keep the comparison compact.
+    showEtsy: false,
+    multipleStores: false,
+    // Only applied when multipleStores is on, so the slider keeps its value when
+    // the checkbox is toggled off and back on.
+    storeCount: 2,
     userInfo: {
       transactionCount: 10,
       avgTransactionPrice: 10,
@@ -64,22 +81,29 @@ export const useShopStore = defineStore('shop', {
       advReports: false,
       shippingRates: false,
     },
-    exchangeRates: {
-      CAD: 0.73655437,
-      USD: 1,
-    },
     providerData,
   }),
   getters: {
     timeFrame: state => (state.months === 1 ? 'Monthly' : 'Yearly'),
+    effectiveStoreCount: state => (state.multipleStores ? state.storeCount : 1),
+    visibleProviders: state => Object.fromEntries(
+      Object.entries(state.providerData).filter(([key]) => state.showEtsy || key !== 'etsy'),
+    ),
     bestValue: (state) => {
-      const arr = Object
-        .keys(state.providerCalculated)
+      const visible = Object
+        .keys(state.providerData)
+        .filter(key => state.showEtsy || key !== 'etsy');
+      // Totals arrive a tick after mount, so fall back to plan order until they do.
+      const scored = visible.filter(key => typeof state.providerCalculated[key].total === 'number');
+      const ranked = (scored.length ? scored : visible)
         .sort((a, b) => state.providerCalculated[a].total - state.providerCalculated[b].total);
-      const select = arr[0];
-      return state.providerData[select][state.region];
+
+      return state.providerData[ranked[0]][state.region];
     },
-    avgRevenue: state => state.userInfo.transactionCount * state.userInfo.avgTransactionPrice || '',
+    // Gross revenue: what buyers actually hand over, shipping included. Fees are
+    // charged on that same base, so excluding shipping here understated profit.
+    avgRevenue: state => state.userInfo.transactionCount
+      * (state.userInfo.avgTransactionPrice + state.userInfo.avgShippingCost),
   },
   actions: {
     setMonths(value) {
@@ -109,21 +133,14 @@ export const useShopStore = defineStore('shop', {
     setShippingRates(value) {
       this.reqs.shippingRates = value;
     },
-    setExchangeRates({ CAD, USD }) {
-      Object.assign(this.exchangeRates, { CAD, USD });
+    setShowEtsy(value) {
+      this.showEtsy = value;
     },
-    getExchangeRates() {
-      const endpoint = 'https://api.currencyapi.com/v3/latest?apikey=Ns2PWtFB4ujlRRLibG4Y6xFxMpWmj9mfB7wD9ZtY&currencies=USD%2CCAD';
-
-      fetch(endpoint)
-        .then(response => response.json())
-        .then((response) => {
-          this.setExchangeRates({
-            CAD: response.data.CAD.value,
-            USD: response.data.USD.value,
-          });
-        })
-        .catch(err => console.error('Failed to fetch exchange rates. Using fallback values: ', err));
+    setMultipleStores(value) {
+      this.multipleStores = value;
+    },
+    setStoreCount(value) {
+      this.storeCount = value;
     },
   },
 });

@@ -18,18 +18,9 @@
           Total {{ timeFrame }} Fees: {{ $money(totalFees) }} <small>{{ region }}</small>
           <show-more>
             <ul>
-              <li v-if="provider.monthlyFee > 0">
-                Monthly Fee: {{ $money(provider.monthlyFee) }}
+              <li v-if="effectiveMonthlyFee > 0">
+                Monthly Fee: {{ $money(effectiveMonthlyFee) }}
                 <small>{{ provider.currency }}</small>
-                <icon-tooltip v-if="provider.currency !== region">
-                  Billed in {{ provider.currency }}
-                </icon-tooltip>
-                <small v-if="provider.currency !== region">
-                  (~{{ $money(provider.monthlyFee * exchangeRates.USD) }} {{ region }})
-                  <icon-tooltip v-if="provider.currency !== region">
-                    XR: {{ exchangeRates.USD }}
-                  </icon-tooltip>
-                </small>
               </li>
               <li v-if="listingFees > 0">Listing Fees: {{ $money(listingFees) }} <small>{{ provider.currency }}</small></li>
               <li v-if="transactionFees > 0">Transaction Fees: {{ $money(transactionFees) }} <small>{{ provider.currency }}</small></li>
@@ -55,27 +46,26 @@
 <script>
 import { mapState } from 'pinia';
 
-import IconTooltip from './IconTooltip.vue';
 import ShowMore from './ShowMore.vue';
 import Cta from './Cta.vue';
 import { useShopStore } from '../stores/shop';
+import { buyerPaidPerSale, effectiveMonthlyFee as calcMonthlyFee, monthlyGmv } from '../fees';
 
 export default {
   name: 'VSummary',
   components: {
-    IconTooltip,
     ShowMore,
     Cta,
   },
   computed: {
     ...mapState(useShopStore, [
       'avgRevenue',
-      'exchangeRates',
       'timeFrame',
       'region',
       'providerCalculated',
       'userInfo',
       'months',
+      'effectiveStoreCount',
     ]),
     ...mapState(useShopStore, { provider: 'bestValue' }),
     totalFees() {
@@ -92,10 +82,16 @@ export default {
       const shippingFee = this.userInfo.avgShippingCost * this.userInfo.transactionCount;
       return (salesFee + shippingFee) * this.provider.salesFeePercentage;
     },
+    effectiveMonthlyFee() {
+      return calcMonthlyFee(
+        this.provider,
+        monthlyGmv(this.userInfo, this.months),
+        this.effectiveStoreCount,
+      );
+    },
     paymentProcessingPercent() {
       // Matches Provider.vue: processing applies to item price + shipping charged.
-      const buyerPaid = (this.userInfo.avgTransactionPrice + this.userInfo.avgShippingCost)
-        * this.userInfo.transactionCount;
+      const buyerPaid = buyerPaidPerSale(this.userInfo) * this.userInfo.transactionCount;
       return buyerPaid * this.provider.paymentProcessingFeePercentage;
     },
     paymentProcessingfixed() {

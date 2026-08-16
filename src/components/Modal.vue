@@ -7,27 +7,17 @@
       <div class="content">
         <ul class="disclaimers">
           <li>This tool is not associated in any way with Shopify, and as such, pricing could change without warning. This tool is intended for reference only, and does not guarantee the accuracy of any pricing information provided.</li>
-          <li>Currency conversions are based on an external resource. Double check conversion rates. Today's rates are:
-            <ul>
-              <li>CAD => USD: {{ exchangeRates.CAD }}</li>
-            </ul>
-          </li>
-          <li>This site contains affiliate links to help support and maintain this tool.</li>
-          <li>
-            Need a pre-made theme? Check out some amazing themes at
-            <a href="https://outofthesandbox.com?rfsn=587318.8a8207" target="_blank">
-              Out of the Sandbox
-              <i class="far fa-external-link-alt"></i>
-            </a>
-          </li>
+          <li>Prices are shown in each region's own currency as Shopify and Etsy bill them, so no currency conversion is applied. Switch region to see the other set of prices.</li>
+          <li>This site contains affiliate links to help support and maintain this tool. Shopify Plus is the exception: those enquiries come straight to us by email and we submit them as partner referrals, not through an affiliate link.</li>
+          <li>Shopify Plus covers one main store plus nine expansion stores under a single contract. Past ten stores, pricing is negotiated directly with Shopify, so the store count here stops at ten.</li>
           <li>
             Need a Shopify developer?
-            <a href="https://www.robinhamill.com" target="_blank">
+            <a href="https://www.upatfive.ca" target="_blank">
               Let's work together!
               <i class="far fa-external-link-alt"></i>
             </a>
           </li>
-          <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hi@robinhamill.com?subject=Issue on Shop Compare">email me</a> 😺.</li>
+          <li>This tool is in beta. If you notice any issues or have comments, please <a href="mailto:hello@upatfive.ca?subject=Issue on Shop Compare">email me</a> 😺.</li>
         </ul>
 
         <v-button
@@ -44,10 +34,7 @@
 </template>
 
 <script>
-import { mapState } from 'pinia';
-
 import VButton from './VButton.vue';
-import { useShopStore } from '../stores/shop';
 
 export default {
   name: 'Modal',
@@ -62,9 +49,6 @@ export default {
     onKeyup(e) {
       return e.key === 'Escape' ? this.close() : false;
     },
-  },
-  computed: {
-    ...mapState(useShopStore, ['exchangeRates']),
   },
   mounted() {
     document.addEventListener('keyup', this.onKeyup);

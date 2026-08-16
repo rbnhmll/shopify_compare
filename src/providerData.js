@@ -321,4 +321,144 @@ export default {
       },
     },
   },
+  // Plus is quoted, not self-serve. Figures below are the public "starts at" rate on
+  // a 3-year term; Shopify bills the GREATER of that platform fee or a percentage of
+  // monthly GMV (0.35% on a 3-year term, 0.40% on 1-year), which is why the variable
+  // fields exist. The USD variable fee is capped at $40k/mo; no CAD cap is published,
+  // so it is left unset (treated as uncapped) rather than guessed.
+  shopifyPlus: {
+    CAD: {
+      name: 'Shopify Plus',
+      id: 'shopifyPlus',
+      // Plus is enterprise, sales-led: referrals go through the Shopify Partner
+      // Program as a submitted lead, not a click-tracked affiliate link. So the CTA
+      // opens an email to us and we submit the lead.
+      affiliate: 'mailto:hello@upatfive.ca?subject=Shopify%20Plus%20enquiry',
+      ctaLabel: 'Get in touch about Plus',
+      currency: 'CAD',
+      monthlyFee: 3400,
+      monthlyFeeVariablePercentage: 0.0035,
+      // One main store + nine expansion stores under a single contract.
+      includedStores: 10,
+      listingFeeFixed: 0,
+      salesFeePercentage: 0,
+      paymentProcessingFeeFixed: 0.3,
+      paymentProcessingFeePercentage: 0.0215,
+      shippingFeePercentage: 0,
+      additionalFeatures: {
+        maxStaffAccounts: {
+          name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
+          value: 'Unlimited',
+        },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 200,
+        },
+        giftCards: {
+          name: 'Gift Cards',
+          id: 'giftCards',
+          value: true,
+        },
+        proReports: {
+          name: 'Professional Reports',
+          id: 'proReports',
+          value: true,
+        },
+        shippingRates: {
+          name: 'Third-party shipping rates',
+          id: 'shippingRates',
+          value: true,
+        },
+        b2b: {
+          name: 'B2B / Wholesale',
+          id: 'b2b',
+          value: true,
+        },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true,
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true,
+        },
+        internationalPricingVariant: {
+          name: 'International Pricing (per variant)',
+          id: 'internationalPricingVariant',
+          value: true,
+        },
+      },
+    },
+    USD: {
+      name: 'Shopify Plus',
+      id: 'shopifyPlus',
+      // Plus is enterprise, sales-led: referrals go through the Shopify Partner
+      // Program as a submitted lead, not a click-tracked affiliate link. So the CTA
+      // opens an email to us and we submit the lead.
+      affiliate: 'mailto:hello@upatfive.ca?subject=Shopify%20Plus%20enquiry',
+      ctaLabel: 'Get in touch about Plus',
+      currency: 'USD',
+      monthlyFee: 2300,
+      monthlyFeeVariablePercentage: 0.0035,
+      // One main store + nine expansion stores under a single contract.
+      includedStores: 10,
+      monthlyFeeVariableCap: 40000,
+      listingFeeFixed: 0,
+      salesFeePercentage: 0,
+      paymentProcessingFeeFixed: 0.3,
+      paymentProcessingFeePercentage: 0.0215,
+      shippingFeePercentage: 0,
+      additionalFeatures: {
+        maxStaffAccounts: {
+          name: 'Staff Accounts',
+          id: 'maxStaffAccounts',
+          value: 'Unlimited',
+        },
+        maxLocations: {
+          name: 'Locations',
+          id: 'maxLocations',
+          value: 200,
+        },
+        giftCards: {
+          name: 'Gift Cards',
+          id: 'giftCards',
+          value: true,
+        },
+        proReports: {
+          name: 'Professional Reports',
+          id: 'proReports',
+          value: true,
+        },
+        shippingRates: {
+          name: 'Third-party shipping rates',
+          id: 'shippingRates',
+          value: true,
+        },
+        b2b: {
+          name: 'B2B / Wholesale',
+          id: 'b2b',
+          value: true,
+        },
+        internationalDomains: {
+          name: 'International Domains',
+          id: 'internationalDomains',
+          value: true,
+        },
+        internationalPricing: {
+          name: 'International Pricing',
+          id: 'internationalPricing',
+          value: true,
+        },
+        internationalPricingVariant: {
+          name: 'International Pricing (per variant)',
+          id: 'internationalPricingVariant',
+          value: true,
+        },
+      },
+    },
+  },
 };

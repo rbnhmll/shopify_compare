@@ -1,7 +1,7 @@
 <template>
   <div class="cta content">
     <h3 class="cta__message">Get started with <strong class="hl">{{ rates.name }}</strong></h3>
-    <v-button :href="rates.affiliate" target="_blank">Sign up for free!</v-button>
+    <v-button :href="rates.affiliate" :target="linkTarget">{{ rates.ctaLabel || 'Sign up for free!' }}</v-button>
   </div>
 </template>
 
@@ -16,6 +16,13 @@ export default {
   props: {
     rates: {
       type: Object,
+    },
+  },
+  computed: {
+    // A mailto: opens the mail client, so _blank would leave a stray empty tab.
+    linkTarget() {
+      const href = this.rates.affiliate || '';
+      return href.startsWith('mailto:') ? null : '_blank';
     },
   },
 };

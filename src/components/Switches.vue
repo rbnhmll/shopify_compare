@@ -2,18 +2,21 @@
   <div class="switches">
     <timeframe-switcher />
     <region-switcher />
+    <etsy-toggle />
   </div>
 </template>
 
 <script>
 import RegionSwitcher from './RegionSwitcher.vue';
 import TimeframeSwitcher from './TimeframeSwitcher.vue';
+import EtsyToggle from './EtsyToggle.vue';
 
 export default {
   name: 'Switches',
   components: {
     RegionSwitcher,
     TimeframeSwitcher,
+    EtsyToggle,
   },
 };
 </script>
